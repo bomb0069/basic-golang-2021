@@ -14,4 +14,15 @@ func main() {
 	for k, v := range colors {
 		fmt.Println(k, " ", v)
 	}
+
+	// infinite loop
+	//for {
+
+	//}
+
+	// for to 5
+	var i = 0
+	for i < 5 {
+		i++
+	}
 }
