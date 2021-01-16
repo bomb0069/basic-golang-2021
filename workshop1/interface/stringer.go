@@ -4,10 +4,6 @@ import (
 	"fmt"
 )
 
-type Stringer interface {
-	String() string
-}
-
 type Employee struct {
 	Name string
 	Age  int
