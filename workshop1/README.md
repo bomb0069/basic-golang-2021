@@ -23,3 +23,10 @@ go test -bench .
 ```go
     type MONTH int
 ```
+
+### Slice
+
+go run array/slice.go
+Colors =  [Red Blue Green]
+A =  [Red Blue]
+Colors,a =  [New Blue Green] [New Blue]
