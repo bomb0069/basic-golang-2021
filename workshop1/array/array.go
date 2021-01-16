@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 func main() {
 	var numbers [5]int
@@ -24,5 +27,7 @@ func main() {
 	var i = 0
 	for i < 5 {
 		i++
+		log.Printf("Logging %v", i)
 	}
+
 }
