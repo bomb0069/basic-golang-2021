@@ -1,7 +1,5 @@
 package demo
 
-import "fmt"
-
-func Greeting() {
-	fmt.Println("Hello World")
+func Greeting() string {
+	return "Hello World"
 }
