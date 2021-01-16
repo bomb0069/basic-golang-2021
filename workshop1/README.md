@@ -30,3 +30,7 @@ go run array/slice.go
 Colors =  [Red Blue Green]
 A =  [Red Blue]
 Colors,a =  [New Blue Green] [New Blue]
+
+### Error vs Defer
+
+Error is for application error, Defer for run time and need to recover state
