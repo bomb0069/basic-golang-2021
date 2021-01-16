@@ -17,3 +17,9 @@ go tool cover -html=coverage.out
 ```cmd
 go test -bench .
 ```
+
+## Alias TYPE
+
+```go
+    type MONTH int
+```
