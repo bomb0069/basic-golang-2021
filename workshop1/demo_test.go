@@ -20,3 +20,15 @@ func TestHello(t *testing.T) {
 	}
 
 }
+
+func BenchmarkHello(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		demo.Greeting()
+	}
+}
+
+func BenchmarkHello2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		demo.Greeting2()
+	}
+}

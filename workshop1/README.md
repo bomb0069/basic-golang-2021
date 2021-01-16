@@ -11,3 +11,9 @@ ok  	demo	(cached)    ### จะรันใหม่ก็ต่อเมื่
 go test -cover
 go test -coverprofile=coverage.out
 go tool cover -html=coverage.out
+
+## Benchmask
+
+```cmd
+go test -bench .
+```
