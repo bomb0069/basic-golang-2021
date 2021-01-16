@@ -15,6 +15,12 @@ func (m Member) sleep() int {
 	return 50
 }
 
+type pui int
+
+func (p pui) sleep() int {
+	return int(p)
+}
+
 func call(u User) {
 	fmt.Println(u.sleep())
 }
@@ -22,4 +28,7 @@ func call(u User) {
 func main() {
 	u := Member{}
 	call(u)
+
+	p := pui(70)
+	call(p)
 }
