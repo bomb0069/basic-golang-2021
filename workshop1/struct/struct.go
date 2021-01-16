@@ -5,20 +5,31 @@ import (
 )
 
 type User struct {
-	Id   int
+	Id int
+	UserForNew
+}
+
+type User2 struct {
+	Id         int
+	UserForNew UserForNew
+}
+type UserForNew struct {
 	Name string
 }
 
-func New(id int, name string) User {
-	return User{1, "bomb0069"}
+func NewUser(name string) User {
+	return User{1, UserForNew{"bomb0069"}}
 }
 
 func main() {
-	u1 := User{1, "bomb0069"}
-	u2 := User{Id: 2, Name: "karan"}
-	u3 := New(1, "bomb0069")
+	u1 := User{1, UserForNew{"bomb0069"}}
+	u2 := User2{2, UserForNew{"karan"}}
+	u3 := NewUser("bomb0069")
 	u1.Name = "XXX"
-	fmt.Printf("%v", u1)
-	fmt.Printf("%+v", u2)
-	fmt.Printf("%+v", u3)
+	fmt.Printf("%v\n", u1)
+	fmt.Printf("%v\n", u1.UserForNew.Name)
+	fmt.Printf("%+v\n", u2.UserForNew.Name)
+	fmt.Printf("%+v\n", u3)
+
+	fmt.Printf("%+v\n", u3.Name)
 }
