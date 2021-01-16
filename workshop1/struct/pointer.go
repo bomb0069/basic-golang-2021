@@ -14,7 +14,7 @@ func (user *UserX) sleep() {
 }
 
 func main() {
-	u2 := UserX{2, "karan"}
+	u2 := &UserX{2, "karan"}
 	u2.sleep()
 	fmt.Println(u2.Name)
 }
