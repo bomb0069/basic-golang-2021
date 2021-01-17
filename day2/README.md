@@ -239,3 +239,15 @@ func main() {
 ### Structure
 
 main -> user -> db -> mongo
+
+### การทำงานของ Router และ Middlewares
+
+### การทำ Resource และ Inject ไปใช้ใน Repository
+
+- การทำ Inject DB Resource
+
+- การทำ Resource ตรงกลางให้เขามาเรียกใช้ แล้วคืนตอนหลัง เช่นไปใช้ MongoBetween
+
+### การแยก Implementation
+
+ระหว่าง User ที่ใช้ Route ของ GIN อยู่ ไปใช้ อย่างอื่น ก็ต้องตัด Dependency ผ่าน Interface ที่เราต้องการ
