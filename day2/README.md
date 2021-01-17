@@ -94,3 +94,11 @@ go mod tidy // clear package  ที่ไม่ได้ใช้งาน
 
 อ่านเพิ่ม
 [How to Write Go Code](https://golang.org/doc/code.html)
+
+ที่อยู่ของ Library ที่เราเอามาลงไว้ที่เครื่องจะอยู่ใน
+
+${GOPATH}/pkg/mod
+
+### GoLang is test by Default นะครับ
+
+คนเขียนภาษา Go ยังเขียน Test เลย เราเป็นใคร เอา Go มาใช้แล้วไม่เขียน Test
