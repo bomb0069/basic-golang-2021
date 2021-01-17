@@ -124,3 +124,118 @@ route.go ก็ไม่ควรยาว ๆ แล้วให้มีแย
 ### Clean Architecture and Hexagonal architecture
 
 มันแยกหน้าที่ได้ เห็นชัด แต่ต้องระวัง เดี๋ยวจะไปเจอ Pattern แถมจะไปเจอพวก cli สำหรับการ generate code ต้องระวัง คำถามคือแต่ละเรื่องจำเป็นต้องมีไหม
+
+## Building REST APIs
+
+### net/http
+
+```go
+func main() {
+  http.HandleFunc("/", Response)
+  http.HandleFunc("/users", UserHandler)
+  http.ListenAndServe(":8080", nil)
+}
+
+func HandleFunc(pattern string, handler func(ResponseWriter, *Request))
+```
+
+#### Func return func
+
+```go
+func Aaa(int a) func(int) int {
+    // Func Aaa จะ Return เป็น Function ที่รับ int และ return int
+}
+```
+
+#### Marshall/Unmarshall vs Encoder/Decoder
+
+มี 2 วิธีในการ แปลง json ต้องไปลองเองว่าอะไรดี กว่า ดีสุดก็เขียนแล้วรันเทียบดู
+
+```go
+json.NewEncoder(w).Encode(u)
+```
+
+#### ยิง Performance Test
+
+```cmd
+wrk -c 100 -t 5 -d http://localhost:8080
+```
+
+### Echo
+
+```go
+
+func main() {
+  e := echo.New()
+  e.GET("/", hello)
+  e.GET("/users", getUser)
+  e.Logger.Fatal(e.Start(":8080"))
+}
+
+func hello(c echo.Context) error {
+  return c.JSON(http.StatusOK, "Hello world")
+}
+```
+
+### Gin
+
+```go
+func hello(c *gin.Context) {
+  c.JSON(http.StatusOK, "Hello world")
+}
+
+func main() {
+  r := gin.Default()
+  r.GET("/", hello)
+  r.GET("/users", getUsers)
+  r.Run(":8080")
+}
+```
+
+```cmd
+% go run . 
+go: downloading github.com/gin-gonic/gin v1.6.3
+go: downloading github.com/go-playground/validator/v10 v10.2.0
+go: downloading github.com/golang/protobuf v1.3.3
+go: downloading golang.org/x/sys v0.0.0-20200116001909-b77594299b42
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:  export GIN_MODE=release
+ - using code:  gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /                         --> main.hello (3 handlers)
+[GIN-debug] GET    /users                    --> main.getUsers (3 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+```
+
+#### using env:  export GIN_MODE=release
+
+#### Close log mode
+
+### [Fiber](https://github.com/gofiber/fiber)
+
+เร็วกว่ามาก ข้างในใช้ [fasthttp](https://github.com/valyala/fasthttp)
+
+```go
+func hello(c *fiber.Ctx) error {
+  return c.JSON("Hello world")
+}
+
+func main() {
+  app := fiber.New()
+  app.Get("/", hello)
+  app.Get("/users", getUsers)
+  app.Listen(":8080")
+}
+```
+
+### สรุป
+
+วิธีการคล้ายกัน แต่ต้องดูว่าเราชอบแบบไหน และ community มีคนใช้กันเยอะไหม แต่ดีที่สุดคือ POC ในหลาย ๆ ด้าน และเลือกให้เหมาะกับงาน
+
+## [Workshop](https://github.com/up1/workshop-golang-20210116/tree/main/workshop-gin-mongodb)
+
+### Structure
+
+main -> user -> db -> mongo
