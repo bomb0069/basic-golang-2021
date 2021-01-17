@@ -35,17 +35,13 @@ func Test_add_first_member_and_should_get_1_for_member_id(t *testing.T) {
 func Test_add_Karan_18_to_first_member_and_GetMember_at_1_should_found_Karan(t *testing.T) {
 	cli := tasks.Cli{}
 
+	expectedMember := tasks.Member{Id: 1, Name: "Karan", Age: 15}
+
 	cli.AddMember(tasks.Member{Name: "Karan", Age: 15})
 
 	member := cli.GetMember(1)
 
-	if member.Id != 1 {
-		t.Errorf("Member Id of new member should be %v but %v", 1, member.Id)
-	}
-	if member.Name != "Karan" {
-		t.Errorf("Member Name of new member should be %v but %v", "Karan", member.Name)
-	}
-	if member.Age != 15 {
-		t.Errorf("Member Age of new member should be %v but %v", 15, member.Age)
+	if member != expectedMember {
+		t.Errorf("Member Id of new member should be %+v but %+v", expectedMember, member)
 	}
 }
