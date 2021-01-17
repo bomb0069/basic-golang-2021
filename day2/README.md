@@ -56,3 +56,41 @@ func main() {
   }
 }
 ```
+
+### Demo Package for SubPackage/SubModule
+
+```cmd
+mkdir demo_package
+cd demo_package
+
+go mod init sample
+
+touch sample.go
+```
+
+create sub packag section 1
+
+```cmd
+mkdir section1
+cd section1
+
+touch user.go
+```
+
+**** อย่าทำนะ  import "../sample/section1" อันนี้แปลว่าไม่เข้าใจ
+
+**** การทำงานข้าม Package จำเป็นต้องเอา Interface มากั้นไหม ดูความเหมาะสม Standard ส่วนใหญ่เขาเอามากั้น แต่ถ้าเราใช้ภายในกันเองก็อาจจะไม่จำเป็นเพราะ เรื่องความซับซ้อน
+
+### Update Version of Library
+
+อยู่ใน go.mod ไม่ควรแก้ไขเอง
+ลบใน go.mod เลยก็ได้ เดี๋ยวมันก็เอาของใหม่มา
+
+เวลาที่เราเอา import package ออกจาก Code มันจะยังไม่ clear ออกจาก go.mod ต้องเคลียร์เอง
+
+```cmd
+go mod tidy // clear package  ที่ไม่ได้ใช้งาน
+```
+
+อ่านเพิ่ม
+[How to Write Go Code](https://golang.org/doc/code.html)
