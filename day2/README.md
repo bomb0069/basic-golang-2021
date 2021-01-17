@@ -2,6 +2,8 @@
 
 ## Review Homework
 
+___
+
 ### File Permission
 
 0644
@@ -105,6 +107,8 @@ ${GOPATH}/pkg/mod
 
 ## Go project structure
 
+___
+
 ### Flat
 
 handler.go ทำงานหลังจาก route.go เพื่อ handle กรณีที่ส่งต่อไป package อื่น ๆ
@@ -126,6 +130,8 @@ route.go ก็ไม่ควรยาว ๆ แล้วให้มีแย
 มันแยกหน้าที่ได้ เห็นชัด แต่ต้องระวัง เดี๋ยวจะไปเจอ Pattern แถมจะไปเจอพวก cli สำหรับการ generate code ต้องระวัง คำถามคือแต่ละเรื่องจำเป็นต้องมีไหม
 
 ## Building REST APIs
+
+___
 
 ### net/http
 
@@ -235,6 +241,8 @@ func main() {
 วิธีการคล้ายกัน แต่ต้องดูว่าเราชอบแบบไหน และ community มีคนใช้กันเยอะไหม แต่ดีที่สุดคือ POC ในหลาย ๆ ด้าน และเลือกให้เหมาะกับงาน
 
 ## [Workshop](https://github.com/up1/workshop-golang-20210116/tree/main/workshop-gin-mongodb)
+
+___
 
 ### Structure
 
