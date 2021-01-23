@@ -12,14 +12,17 @@ func main() {
 	// Make
 	var colorMake = make([]string, 5)
 
-	fmt.Println("Colors = ", colors)
-	fmt.Println("Colors = ", colorSlice)
-	fmt.Println("Colors = ", colorMake)
+	fmt.Println("colors = 	", colors)
+	fmt.Println("colorSlice = 	", colorSlice)
+	fmt.Println("colorMake = 	", colorMake)
 
 	a := colors[0:2]
+	fmt.Println("a = ", a)
+
 	a = append(a, "XXX")
+	fmt.Println("a = ", a)
 	a = append(a, "YYY")
-	fmt.Println("A = ", a)
+	fmt.Println("a = ", a)
 	a[0] = "New"
 	fmt.Println("Colors,a = ", colors, a)
 

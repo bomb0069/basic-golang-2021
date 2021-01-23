@@ -4,17 +4,21 @@ import (
 	"fmt"
 )
 
-type UserX struct {
+type User struct {
 	Id   int
 	Name string
 }
 
-func (user *UserX) sleep() {
+func (user *User) sleep() {
 	user.Name = "XXXXX"
 }
 
 func main() {
-	u2 := &UserX{2, "karan"}
+	u := User{2, "karan"}
+	u.sleep()
+	fmt.Println(u.Name)
+
+	u2 := &User{2, "karan"}
 	u2.sleep()
 	fmt.Println(u2.Name)
 }
