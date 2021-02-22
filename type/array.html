@@ -3,10 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
+        <title>Array - Basic-Golang 2021</title>
         
-        
-        <base href="/">
         
 
 
@@ -20,28 +18,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
+        <link rel="icon" href="../favicon.svg">
         
         
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="../favicon.png">
         
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
         
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -51,7 +49,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -97,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="../project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="../testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="../type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/array.html" class="active"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="../type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="../type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="../error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="../day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -133,7 +131,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -165,15 +163,63 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#document-not-found-404" id="document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1><a class="header" href="#array" id="array">Array</a></h1>
+<pre><code class="language-go">// ประกาศตัวแปรที่ชื่อว่า numbers เป็น Array ของ int ที่มีขนาดเท่ากับ 5
+var numbers [5]int
+
+// การอ้างถึง Array ทำได้ใน []
+numbers[0] = 1
+numbers[1] = 2
+
+// การประกาศ Array ของ String โดยสร้างจากค่าตั้งต้นเลย
+var colors = [2]string{&quot;Red&quot;, &quot;Blue&quot;}
+</code></pre>
+<h2><a class="header" href="#รูปแบบของ-for-loop" id="รูปแบบของ-for-loop">รูปแบบของ For Loop</a></h2>
+<p>ใน Go มี Loop แค่แบบเดียวคือ Loop For เพราะฉะนั้นเวลาจะใช้ต้องไปประยุกต์เอาเอง ว่าจะใช้งานแบบไหน เช่นตัวอย่างของการเอา For Loop ไปใช้กับข้อมูลใน Array</p>
+<pre><code class="language-go">// Loop จาก Len ของ Array แล้วก็อ้างถึงข้อมูลตามตำแหน่งในแต่ละรอบ
+for i := 0; i &lt; len(colors); i++ {
+    fmt.Println(colors[i])
+}
+
+// ใช้ Loop ร่วมกับ  range เพื่อแกะข้อมูลออกมาทีละตัว
+for i, v := range colors {
+    // range จะ return ค่ากลับมา 2 ตัวคือ Index และ Value  ถ้าไม่อยากได้ก็สามารถใช้  _ ได้
+    fmt.Println(i, &quot; &quot;, v)
+}
+
+// infinite loop
+for {
+
+}
+
+// for 5 loop อันนี้เอาไปประยกต์ใช้กับ while loop ได้
+var i = 0
+for i &lt; 5 {
+    i++
+    log.Printf(&quot;Logging %v&quot;, i)
+}
+
+2021/01/XX 16:41:11 Logging 1
+2021/01/XX 16:41:11 Logging 2
+2021/01/XX 16:41:11 Logging 3
+2021/01/XX 16:41:11 Logging 4
+2021/01/XX 16:41:11 Logging 5
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="../type/collection.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
+                        
+                            <a rel="next" href="../type/slice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -183,7 +229,15 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="../type/collection.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
+                
+                    <a rel="next" href="../type/slice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 
@@ -204,14 +258,14 @@
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         

@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li class="chapter-item expanded "><a href="day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,7 +166,30 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#day-1" id="day-1">Day 1</a></h1>
-<h2><a class="header" href="#initial-go-project" id="initial-go-project">Initial Go Project</a></h2>
+<h2><a class="header" href="#backlog-of-content" id="backlog-of-content">Backlog of Content</a></h2>
+<p>List ของ git log จากทีี่ลองทำตามใน Class</p>
+<pre><code class="language-text">174a278 [Added]: Interface of All
+e00f4ce [Added]: Interface of Primitive Type Int
+6b22fcd [Added]: Interface of Stringer
+f876801 [Removed]: Stringer Interface
+8b92209 [Added]: JSON Example and Exercise for add and list user
+32731ca [Reorganized]: Folder Structure and move all of workshop into day1
+4f7d6f4 [Init]: New task module for homework
+73ee837 [Moved]: input.json into execise for initial data file
+cef04a1 [Added]: Initial Cli with method NumberOfMember and AddMember
+648726e [Added]: feature getMember with id
+f5534c7 [Refactor]: Test to compare object instead of primitive
+cd06b4a [Added]: Reviews Session of Day2
+a97828c [Added]: Dependency Test of Store in UserService
+9a078c5 [Added]: go module and sub module in go project
+2f93cf4 [Added]: Version of Library
+b72de03 [Added]: Project Structure
+545a459 [Added]: Section2 SubPackage to call to Section1 SubPackage
+32bbc90 [Added]: additional Go Project Structure
+b40e03c [Added]: Content for Building RESTFul APIs
+8310af8 [Added]: อธิบายการทำงานของ Router และ Middleware
+</code></pre>
+<h1><a class="header" href="#initial-go-project" id="initial-go-project">Initial Go Project</a></h1>
 <pre><code class="language-cmd">$go mod init demo
 </code></pre>
 <p>จะได้ file ชื่อ go.mod มาใน folder</p>
@@ -174,8 +197,8 @@
 
 go 1.15
 </code></pre>
-<h2><a class="header" href="#go-simple-project" id="go-simple-project">Go Simple Project</a></h2>
-<h3><a class="header" href="#create-demogo" id="create-demogo">Create demo.go</a></h3>
+<h1><a class="header" href="#go-simple-project" id="go-simple-project">Go Simple Project</a></h1>
+<h2><a class="header" href="#create-demogo" id="create-demogo">Create demo.go</a></h2>
 <p>สร้างไฟล์ demo.go (ชื่อเดียวกับ module) ปกติคนที่เขียน go จะมีการจัดการ module และจะสร้าง file ที่ชื่อเดียวกับ module ขึ้นมา เพื่อเป็นจุดเริ่มต้นของ module นั้น ซึ่งไม่จำเป็นต้องมีก็ได้ โดย File นี้ปกติจะไม่ถูกใช้ในการรัน</p>
 <pre><code class="language-go">package demo    // กำหนดชื่อ package ให้เหมือนชื่อ module ที่ initial มา
 
@@ -183,9 +206,9 @@ func Greeting() string {  // ประกาศ Function ชื่อ Greeting �
     return &quot;Hello World&quot;
 }
 </code></pre>
-<h3><a class="header" href="#ขอกำหนดเรือง-function-name" id="ขอกำหนดเรือง-function-name">ข้อกำหนดเรื่อง Function Name</a></h3>
+<h2><a class="header" href="#ขอกำหนดเรือง-function-name" id="ขอกำหนดเรือง-function-name">ข้อกำหนดเรื่อง Function Name</a></h2>
 <p>เนื่องจาก Go มีข้อกำหนด เรื่อง Access Modifier ของแต่ละ Function โดยที่ Function ใดที่ต้องการให้ Access จากภายนอก Package ก็จะต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่ เช่น ในกรณีนี้ Greeting สามารถเข้าถึง/เรียกใช้ได้จาก Package อื่น ๆ ถ้าเปลี่ยนเป็น greeting ก็จะเรียกใช้ไม่ได้</p>
-<h3><a class="header" href="#create-maingo" id="create-maingo">Create main.go</a></h3>
+<h2><a class="header" href="#create-maingo" id="create-maingo">Create main.go</a></h2>
 <p>สร้าง Folder cmd ขึ้นมาเพื่อรองรับการ execute จาก cmd และสร้าง file ชื่อว่า main.go ขึ้นมา</p>
 <pre><code class="language-go">package main    // package สำหรับ main.go จะเป็น main เสมอ
 
@@ -197,15 +220,15 @@ func main() {
 </code></pre>
 <p>เนื่องจาก Package demo มีการกำหนด Function Greeting โดยที่มีตัวอักษรแรกเป็นตัวใหญ่ เลยสามารถเรียกใช้จาก Function main() ซึ่งอยู่ใน Package main  และเป็นคนละ Package  กับ Greeting ได้</p>
 <p>ถ้าเราเปลี่ยน Greeting เป็น greeting ตอน Compile go ก็จะด่าเรา</p>
-<h3><a class="header" href="#simple-project-structure" id="simple-project-structure">Simple Project Structure</a></h3>
+<h2><a class="header" href="#simple-project-structure" id="simple-project-structure">Simple Project Structure</a></h2>
 <pre><code class="language-tree">demo
 |- go.mod   // Package dependency for go project
 |- demo.go  // Default go file for each module
 |- cmd
     |- main.go   // runable file with main function
 </code></pre>
-<h2><a class="header" href="#testing-with-go" id="testing-with-go">Testing with Go</a></h2>
-<h3><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h3>
+<h1><a class="header" href="#testing-in-golang" id="testing-in-golang">Testing in Golang</a></h1>
+<h2><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h2>
 <p>ลักษณะของ File Test ใน Go</p>
 <ul>
 <li>อยู่ที่เดียวกับ Production Code</li>
@@ -231,7 +254,7 @@ func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้
     }
 }
 </code></pre>
-<h3><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h3>
+<h2><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h2>
 <p>การรัน Test ใช้ Command</p>
 <pre><code class="language-cmd">$go test    // มันจะหาไฟล์ Testให้
 </code></pre>
@@ -263,7 +286,7 @@ demo/demo.go:3.24,5.2 1 1
 <pre><code class="language-cmd">go tool cover -html=coverage.out
 </code></pre>
 <p>มันจะเปิด Browser ขึ้นมาพร้อม coverage report เลย</p>
-<h3><a class="header" href="#การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction" id="การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction">การรัน Benchmark เพื่อเทียบประสิทธิภาพของFunction</a></h3>
+<h2><a class="header" href="#การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction" id="การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction">การรัน Benchmark เพื่อเทียบประสิทธิภาพของFunction</a></h2>
 <p>เราสามารถเปรียบเทียบความเร็วในการทำงานของ App ได้ด้วยการเขียน Benchmark แล้วรัน</p>
 <p>ตย. เขียน Benchmark ใน test file demo_test.go</p>
 <pre><code class="language-go">func BenchmarkHello(b *testing.B) {
@@ -288,14 +311,14 @@ BenchmarkHello2-4       1000000000             0.366 ns/op
 PASS
 ok      demo    1.288s
 </code></pre>
-<h2><a class="header" href="#go-type" id="go-type">Go Type</a></h2>
-<h3><a class="header" href="#alias-type" id="alias-type">Alias TYPE</a></h3>
+<h1><a class="header" href="#go-type" id="go-type">Go Type</a></h1>
+<h2><a class="header" href="#alias-type" id="alias-type">Alias TYPE</a></h2>
 <p>เราสามารถสร้าง Type ของตัวแปลใน Go ใหม่ได้ผ่าน  คำสั่ง type</p>
 <pre><code class="language-go">    type MONTH int  // สร้าง type ใหม่ที่ชื่อว่า MONTH โดยอ้างอิงจาก int
 
     var january MONTH // สร้างตัวแปลชื่อ january เป็นประเภท MONTH
 </code></pre>
-<h3><a class="header" href="#example-of-error" id="example-of-error">Example of Error</a></h3>
+<h2><a class="header" href="#example-of-error" id="example-of-error">Example of Error</a></h2>
 <p>เนื่องจาก Go เป็นภาษาที่ return type ของ function สามารถทำได้มากกว่า 1 ตัวแปร เช่น เราอาจจะอยากสร้าง function ที่ return int และ string ไปพร้อมกัน ก็ได้ และสิ่งที่ Go ไม่มีคือ exception เพราะฉะนั้น ถ้า function ของเราต้องรองรับกรณีที่ทำได้สำเร็จจะ return แบบนึง ถ้า error จะ return แบบนึงก็สามารถที่จะสร้าง functiom ที่ return หลาย ๆ ตัวแปลได้</p>
 <pre><code class="language-go">package demo
 
@@ -341,6 +364,7 @@ func main() {
 }
 </code></pre>
 <p>คำถามคือ ถ้าเราเขียน  function ที่ return error มาด้วย เราควรจะเอา error ไว้ตำแหน่งไหน พี่ปุ๋ยเลยให้ดู ตัวอย่างจากพวก Library ที่อยู่ใน golang website ก็จะเห็นว่าเขาไว้เป็นตัวสุดท้ายเสมอเลย เพราะฉะนั้นเราจะเอาภาษาอะไรมาพัฒนา เราจำเป็นต้องแนวคิด แนวการเขียนของภาษานั้น ๆ ด้วย</p>
+<h1><a class="header" href="#collection-type" id="collection-type">Collection Type</a></h1>
 <h2><a class="header" href="#collection-type-in-go" id="collection-type-in-go">Collection Type in Go</a></h2>
 <p>ใน Go มี Type เป็น Collection อยู่ 3 ประเภท</p>
 <ul>
@@ -348,7 +372,7 @@ func main() {
 <li>Slice :   Array ที่ไม่ต้องกำหนดขนาด</li>
 <li>Map :     Collection แบบ Key, Value</li>
 </ul>
-<h3><a class="header" href="#array-in-go" id="array-in-go">Array in Go</a></h3>
+<h1><a class="header" href="#array" id="array">Array</a></h1>
 <pre><code class="language-go">// ประกาศตัวแปรที่ชื่อว่า numbers เป็น Array ของ int ที่มีขนาดเท่ากับ 5
 var numbers [5]int
 
@@ -359,7 +383,7 @@ numbers[1] = 2
 // การประกาศ Array ของ String โดยสร้างจากค่าตั้งต้นเลย
 var colors = [2]string{&quot;Red&quot;, &quot;Blue&quot;}
 </code></pre>
-<h4><a class="header" href="#รูปแบบของ-for-loop" id="รูปแบบของ-for-loop">รูปแบบของ For Loop</a></h4>
+<h2><a class="header" href="#รูปแบบของ-for-loop" id="รูปแบบของ-for-loop">รูปแบบของ For Loop</a></h2>
 <p>ใน Go มี Loop แค่แบบเดียวคือ Loop For เพราะฉะนั้นเวลาจะใช้ต้องไปประยุกต์เอาเอง ว่าจะใช้งานแบบไหน เช่นตัวอย่างของการเอา For Loop ไปใช้กับข้อมูลใน Array</p>
 <pre><code class="language-go">// Loop จาก Len ของ Array แล้วก็อ้างถึงข้อมูลตามตำแหน่งในแต่ละรอบ
 for i := 0; i &lt; len(colors); i++ {
@@ -390,7 +414,7 @@ for i &lt; 5 {
 2021/01/XX 16:41:11 Logging 4
 2021/01/XX 16:41:11 Logging 5
 </code></pre>
-<h3><a class="header" href="#slice-in-go" id="slice-in-go">Slice in Go</a></h3>
+<h1><a class="header" href="#slice" id="slice">Slice</a></h1>
 <p>คือ Loop ที่ไม่ต้องกำหนดขนาดตอนตั้งต้น ที่เหลือเหมือน Array</p>
 <pre><code class="language-go">// Array
 var colors = [5]string{&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Yellow&quot;, &quot;Black&quot;}
@@ -480,7 +504,7 @@ fmt.Println(stringSlice)
 [1 2 3 4 5 6 11]
 [bomb karan sivarat wat]
 </code></pre>
-<h3><a class="header" href="#map-in-go" id="map-in-go">Map in Go</a></h3>
+<h1><a class="header" href="#map" id="map">Map</a></h1>
 <p>Collection Type สุดท้ายใน Go คือ Map ซึ่งมันก็คือการเก็บข้อมูลเป็นคู่แบบ Key, Value ที่เราคุ้นเคยเนี่ยแหละ</p>
 <pre><code class="language-go">numbers := make(map[string]int)
 numbers[&quot;one&quot;] = 1
@@ -510,7 +534,163 @@ n2 = 0
 [result]
 Not Found
 </code></pre>
-<h2><a class="header" href="#error-vs-defer" id="error-vs-defer">Error vs Defer</a></h2>
+<h1><a class="header" href="#struct" id="struct">Struct</a></h1>
+<p>เป็น Type ลักษณะ Object ที่สามารถกำหนดได้เองว่าภายในจะประกอบไปด้วย attribute อะไรบ้าง</p>
+<h2><a class="header" href="#simple-struct" id="simple-struct">Simple struct</a></h2>
+<pre><code class="language-go">type user struct {
+    id   int
+    name string
+}
+
+func main() {
+    u1 := user{1, &quot;bomb0069&quot;}        // Go จะใส่ให้ตามลำดัับที่เรากำหนดไว้ กรณนี้ 1-&gt;id, bomb0069-&gt;name
+    u2 := user{id: 2, name: &quot;karan&quot;} // ระบุชื่อเลยว่าจะเอาเข้า attribute ไหน
+    u1.name = &quot;XXX&quot;                  // assign ค่าไปที่ attribute ได้
+    fmt.Printf(&quot;%v&quot;, u1)
+    fmt.Printf(&quot;%+v&quot;, u2)
+}
+</code></pre>
+<p>หรือเราจะสร้าง function เพื่อ new object ก็ได้</p>
+<pre><code class="language-go">func New(id int, name string) User {
+    return User{1, &quot;bomb0069&quot;}
+}
+
+func main() {
+    u1 := New(1, &quot;bomb0069&quot;)
+    fmt.Printf(&quot;%v&quot;, u1)
+}
+</code></pre>
+<h2><a class="header" href="#struct-with-struct-composition" id="struct-with-struct-composition">Struct with Struct Composition</a></h2>
+<pre><code class="language-go">type User struct {
+    Id   int
+    UserForNew   // User มีการ Embeded เอา UserForNew  เข้ามาด้วย
+}
+
+type User2 struct {
+    Id          int
+    UserForNew  UserForNew  // User2 ประกอบไปด้วย id กับ UserForNew
+}
+
+type UserForNew struct {
+    Name string
+}
+
+func New(id int, name string) User {
+    return User{1, UserForNew{&quot;bomb0069&quot;}}
+}
+
+func main() {
+    u1 := User{1, UserForNew{&quot;bomb0069&quot;}}
+    u2 := User2{2, UserForNew{&quot;karan&quot;}}
+    u3 := NewUser(&quot;bomb0069&quot;)
+    u1.Name = &quot;XXX&quot;   // กรณีมีการ Embeded เราสามารถเรียกใช้ Attribute ในของที่เรา Embeded มาได้โดยตรง 
+    fmt.Printf(&quot;%+v\n&quot;, u1)
+    fmt.Printf(&quot;%+v\n&quot;, u1.Name) // อ้างถึงตรง
+    fmt.Printf(&quot;%+v\n&quot;, u1.UserForNew.Name) // อ้่างถึงผ่าน UserForNew
+    fmt.Printf(&quot;%+v\n&quot;, u2.UserForNew.Name)
+    fmt.Printf(&quot;%+v\n&quot;, u3)
+
+    fmt.Printf(&quot;%+v\n&quot;, u3.Name)
+}
+
+[result]
+{Id:1 UserForNew:{Name:XXX}}  // ถึงจะเป็น Embeded เวลา print ก็ยังเห็นเหมือนมี UserForNew ครอบอยู่
+XXX
+XXX
+karan
+{Id:1 UserForNew:{Name:bomb0069}}
+bomb0069
+</code></pre>
+<h2><a class="header" href="#method-in-struct" id="method-in-struct">Method in Struct</a></h2>
+<p>เนื่องจาก Go ไม่ใช่ Object Oriented เพราะถึงมี Struct แต่ก็มีแค่ Attribute ไม่มี Behavior หรือ Method แต่เราสามารสร้าง function ไปผูกกับ struct เพื่อทำหน้าที่คล้าย method ของ OOP ได้</p>
+<pre><code class="language-go">type User struct {
+    Id int
+    Name string
+}
+
+// ประกาศว่า function นี้มี receiver type (หมายถึง struct ที่จะเอาไปผูกแล้วส่งมาเมื่อถูกเรียก) คือ User
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    // สามารถเอา u ที่เกิดจาก User มาเรียกใช้ printName ได้
+    u.printName()
+}
+</code></pre>
+<h2><a class="header" href="#method-of-struct-and-overwrite-method-in-go-for-embeded" id="method-of-struct-and-overwrite-method-in-go-for-embeded">Method of Struct and Overwrite Method in Go (for embeded)</a></h2>
+<pre><code class="language-go">type User struct {
+    Name string
+}
+
+type User2 struct {
+    Id int
+    User
+}
+
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func (user User2) printName() {
+    fmt.Println(&quot;User 2 := &quot;, user.Name)  // User2 สามารถเรียกใช้ Name ใน User ได้โดยตรงเพราะเป็น Embeded
+}
+
+func main() {
+    u2 := User2{2, User{&quot;karan&quot;}}
+    u2.printName()
+
+}
+
+[result]
+User 2 :=  karan
+</code></pre>
+<h2><a class="header" href="#method-of-struct-with-pointer" id="method-of-struct-with-pointer">Method of Struct with Pointer</a></h2>
+<p>Method ก่อนหน้านี้เป็นแค่ action ที่ทำผ่าน struct เท่านั้นไม่สามารถ เปลี่ยนแปลงค่าที่อยู่ใน Struct ได้ ลองดู Code ข้างล่างนี้</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user User) sleep() {
+    user.Name = &quot;XXXXX&quot;   // มีการ Set ค่า Name เป็น XXXXX
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    u.sleep()              // sleep เปลี่ยนค่า Name เป็น XXXXX
+    fmt.Println(u.Name)    // print ค่า Name ออกมา
+}
+
+[result]
+karan                      // ผลออกมาค่าไม่เปลี่ยน ยังเป็น karan เหมือนตอน New
+</code></pre>
+<p>เนื่องจาก receiver type ของ function sleep ส่ง User มาเป็น value ทำให้การเปลี่ยนแปลงภายในไม่มีผลกับภายนอก แก้โดยเพิ่ม * ไปตรง receiver type และ &amp; ไปตอน new object (อันหลังผมไม่ใส่ก็ยังใช้ได้ แต่พี่ปุ๋ยบอกว่าให้ใส่เพื่อเราจะได้รู้ว่าเราจะเอาไปใช้แบบไหน)</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user *User) sleep() {  // เพิ่ม * หน้า User เพื่อบอกว่าเป็น pointer
+    user.Name = &quot;XXXXX&quot;
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}     // สร้าง user แบบปกติ
+    u.sleep()
+    fmt.Println(&quot;User := &quot; + u.Name)
+
+    u2 := &amp;User{2, &quot;karan&quot;}   // สร้าง user แบบมี &amp; ด้านหน้า
+    u2.sleep()
+    fmt.Println(&quot;User2 :=&quot; + u2.Name)
+}
+
+[result]
+User := XXXXX   // ผลออกเหมือนกัน
+User2 := XXXXX
+</code></pre>
+<h1><a class="header" href="#error-and-defer" id="error-and-defer">Error and Defer</a></h1>
 <p>เนื่องจากใน Go ไม่มี exception เพราะฉะนั้นในกรณีที่เกิดปัญหาตอน runtime แล้วต้องการ Handle case ที่เกิดขึ้น เช่น ต้องปิด connection Database ถึงแม้ว่าจะเกิด Run Time Error ก็ตาม เราสามารถทำได้โดยการสร้าง Function ที่จะทำงานทุกครั้ง เมื่อ Function หลักของเราทำงานเสร็จ แล้วเช็คว่าเกิด panic ขึ้นได้ ผ่าน recover function</p>
 <pre><code class="language-go">func main() {
 
@@ -564,185 +744,6 @@ func panicHandler() {
 </code></pre>
 <p>เพราะฉะนั้น</p>
 <pre><code class="language-text">Error is for application error, Defer for run time and need to recover state
-</code></pre>
-<h2><a class="header" href="#struct" id="struct">Struct</a></h2>
-<p>เป็น Type ลักษณะ Object ที่สามารถกำหนดได้เองว่าภายในจะประกอบไปด้วย attribute อะไรบ้าง</p>
-<h3><a class="header" href="#simple-struct" id="simple-struct">Simple struct</a></h3>
-<pre><code class="language-go">type user struct {
-    id   int
-    name string
-}
-
-func main() {
-    u1 := user{1, &quot;bomb0069&quot;}        // Go จะใส่ให้ตามลำดัับที่เรากำหนดไว้ กรณนี้ 1-&gt;id, bomb0069-&gt;name
-    u2 := user{id: 2, name: &quot;karan&quot;} // ระบุชื่อเลยว่าจะเอาเข้า attribute ไหน
-    u1.name = &quot;XXX&quot;                  // assign ค่าไปที่ attribute ได้
-    fmt.Printf(&quot;%v&quot;, u1)
-    fmt.Printf(&quot;%+v&quot;, u2)
-}
-</code></pre>
-<p>หรือเราจะสร้าง function เพื่อ new object ก็ได้</p>
-<pre><code class="language-go">func New(id int, name string) User {
-    return User{1, &quot;bomb0069&quot;}
-}
-
-func main() {
-    u1 := New(1, &quot;bomb0069&quot;)
-    fmt.Printf(&quot;%v&quot;, u1)
-}
-</code></pre>
-<h3><a class="header" href="#struct-with-struct-composition" id="struct-with-struct-composition">Struct with Struct Composition</a></h3>
-<pre><code class="language-go">type User struct {
-    Id   int
-    UserForNew   // User มีการ Embeded เอา UserForNew  เข้ามาด้วย
-}
-
-type User2 struct {
-    Id          int
-    UserForNew  UserForNew  // User2 ประกอบไปด้วย id กับ UserForNew
-}
-
-type UserForNew struct {
-    Name string
-}
-
-func New(id int, name string) User {
-    return User{1, UserForNew{&quot;bomb0069&quot;}}
-}
-
-func main() {
-    u1 := User{1, UserForNew{&quot;bomb0069&quot;}}
-    u2 := User2{2, UserForNew{&quot;karan&quot;}}
-    u3 := NewUser(&quot;bomb0069&quot;)
-    u1.Name = &quot;XXX&quot;   // กรณีมีการ Embeded เราสามารถเรียกใช้ Attribute ในของที่เรา Embeded มาได้โดยตรง 
-    fmt.Printf(&quot;%+v\n&quot;, u1)
-    fmt.Printf(&quot;%+v\n&quot;, u1.Name) // อ้างถึงตรง
-    fmt.Printf(&quot;%+v\n&quot;, u1.UserForNew.Name) // อ้่างถึงผ่าน UserForNew
-    fmt.Printf(&quot;%+v\n&quot;, u2.UserForNew.Name)
-    fmt.Printf(&quot;%+v\n&quot;, u3)
-
-    fmt.Printf(&quot;%+v\n&quot;, u3.Name)
-}
-
-[result]
-{Id:1 UserForNew:{Name:XXX}}  // ถึงจะเป็น Embeded เวลา print ก็ยังเห็นเหมือนมี UserForNew ครอบอยู่
-XXX
-XXX
-karan
-{Id:1 UserForNew:{Name:bomb0069}}
-bomb0069
-</code></pre>
-<h3><a class="header" href="#method-in-struct" id="method-in-struct">Method in Struct</a></h3>
-<p>เนื่องจาก Go ไม่ใช่ Object Oriented เพราะถึงมี Struct แต่ก็มีแค่ Attribute ไม่มี Behavior หรือ Method แต่เราสามารสร้าง function ไปผูกกับ struct เพื่อทำหน้าที่คล้าย method ของ OOP ได้</p>
-<pre><code class="language-go">type User struct {
-    Id int
-    Name string
-}
-
-// ประกาศว่า function นี้มี receiver type (หมายถึง struct ที่จะเอาไปผูกแล้วส่งมาเมื่อถูกเรียก) คือ User
-func (user User) printName() {
-    fmt.Println(&quot;User := &quot;, user.Name)
-}
-
-func main() {
-    u := User{2, &quot;karan&quot;}
-    // สามารถเอา u ที่เกิดจาก User มาเรียกใช้ printName ได้
-    u.printName()
-}
-</code></pre>
-<h3><a class="header" href="#method-of-struct-and-overwrite-method-in-go-for-embeded" id="method-of-struct-and-overwrite-method-in-go-for-embeded">Method of Struct and Overwrite Method in Go (for embeded)</a></h3>
-<pre><code class="language-go">type User struct {
-    Name string
-}
-
-type User2 struct {
-    Id int
-    User
-}
-
-func (user User) printName() {
-    fmt.Println(&quot;User := &quot;, user.Name)
-}
-
-func (user User2) printName() {
-    fmt.Println(&quot;User 2 := &quot;, user.Name)  // User2 สามารถเรียกใช้ Name ใน User ได้โดยตรงเพราะเป็น Embeded
-}
-
-func main() {
-    u2 := User2{2, User{&quot;karan&quot;}}
-    u2.printName()
-
-}
-
-[result]
-User 2 :=  karan
-</code></pre>
-<h3><a class="header" href="#method-of-struct-with-pointer" id="method-of-struct-with-pointer">Method of Struct with Pointer</a></h3>
-<p>Method ก่อนหน้านี้เป็นแค่ action ที่ทำผ่าน struct เท่านั้นไม่สามารถ เปลี่ยนแปลงค่าที่อยู่ใน Struct ได้ ลองดู Code ข้างล่างนี้</p>
-<pre><code class="language-go">type User struct {
-    Id   int
-    Name string
-}
-
-func (user User) sleep() {
-    user.Name = &quot;XXXXX&quot;   // มีการ Set ค่า Name เป็น XXXXX
-}
-
-func main() {
-    u := User{2, &quot;karan&quot;}
-    u.sleep()              // sleep เปลี่ยนค่า Name เป็น XXXXX
-    fmt.Println(u.Name)    // print ค่า Name ออกมา
-}
-
-[result]
-karan                      // ผลออกมาค่าไม่เปลี่ยน ยังเป็น karan เหมือนตอน New
-</code></pre>
-<p>เนื่องจาก receiver type ของ function sleep ส่ง User มาเป็น value ทำให้การเปลี่ยนแปลงภายในไม่มีผลกับภายนอก แก้โดยเพิ่ม * ไปตรง receiver type และ &amp; ไปตอน new object (อันหลังผมไม่ใส่ก็ยังใช้ได้ แต่พี่ปุ๋ยบอกว่าให้ใส่เพื่อเราจะได้รู้ว่าเราจะเอาไปใช้แบบไหน)</p>
-<pre><code class="language-go">type User struct {
-    Id   int
-    Name string
-}
-
-func (user *User) sleep() {  // เพิ่ม * หน้า User เพื่อบอกว่าเป็น pointer
-    user.Name = &quot;XXXXX&quot;
-}
-
-func main() {
-    u := User{2, &quot;karan&quot;}     // สร้าง user แบบปกติ
-    u.sleep()
-    fmt.Println(&quot;User := &quot; + u.Name)
-
-    u2 := &amp;User{2, &quot;karan&quot;}   // สร้าง user แบบมี &amp; ด้านหน้า
-    u2.sleep()
-    fmt.Println(&quot;User2 :=&quot; + u2.Name)
-}
-
-[result]
-User := XXXXX   // ผลออกเหมือนกัน
-User2 := XXXXX
-</code></pre>
-<h2><a class="header" href="#backlog-of-content" id="backlog-of-content">Backlog of Content</a></h2>
-<p>List ของ git log จากทีี่ลองทำตามใน Class</p>
-<pre><code class="language-text">174a278 [Added]: Interface of All
-e00f4ce [Added]: Interface of Primitive Type Int
-6b22fcd [Added]: Interface of Stringer
-f876801 [Removed]: Stringer Interface
-8b92209 [Added]: JSON Example and Exercise for add and list user
-32731ca [Reorganized]: Folder Structure and move all of workshop into day1
-4f7d6f4 [Init]: New task module for homework
-73ee837 [Moved]: input.json into execise for initial data file
-cef04a1 [Added]: Initial Cli with method NumberOfMember and AddMember
-648726e [Added]: feature getMember with id
-f5534c7 [Refactor]: Test to compare object instead of primitive
-cd06b4a [Added]: Reviews Session of Day2
-a97828c [Added]: Dependency Test of Store in UserService
-9a078c5 [Added]: go module and sub module in go project
-2f93cf4 [Added]: Version of Library
-b72de03 [Added]: Project Structure
-545a459 [Added]: Section2 SubPackage to call to Section1 SubPackage
-32bbc90 [Added]: additional Go Project Structure
-b40e03c [Added]: Content for Building RESTFul APIs
-8310af8 [Added]: อธิบายการทำงานของ Router และ Middleware
 </code></pre>
 <h1><a class="header" href="#day-2" id="day-2">Day 2</a></h1>
 <h2><a class="header" href="#review-homework" id="review-homework">Review Homework</a></h2>

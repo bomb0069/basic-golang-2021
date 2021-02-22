@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Day1 - Basic-Golang 2021</title>
+        <title>Go Simple Project - Basic-Golang 2021</title>
         
         
 
@@ -18,28 +18,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
+        <link rel="icon" href="../favicon.svg">
         
         
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="../favicon.png">
         
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
         
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -49,7 +49,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="day1.html" class="active"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="../project/simple.html" class="active"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="../testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="../type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="../type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="../type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="../error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="../day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -131,7 +131,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -163,29 +163,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#day-1" id="day-1">Day 1</a></h1>
-<h2><a class="header" href="#backlog-of-content" id="backlog-of-content">Backlog of Content</a></h2>
-<p>List ของ git log จากทีี่ลองทำตามใน Class</p>
-<pre><code class="language-text">174a278 [Added]: Interface of All
-e00f4ce [Added]: Interface of Primitive Type Int
-6b22fcd [Added]: Interface of Stringer
-f876801 [Removed]: Stringer Interface
-8b92209 [Added]: JSON Example and Exercise for add and list user
-32731ca [Reorganized]: Folder Structure and move all of workshop into day1
-4f7d6f4 [Init]: New task module for homework
-73ee837 [Moved]: input.json into execise for initial data file
-cef04a1 [Added]: Initial Cli with method NumberOfMember and AddMember
-648726e [Added]: feature getMember with id
-f5534c7 [Refactor]: Test to compare object instead of primitive
-cd06b4a [Added]: Reviews Session of Day2
-a97828c [Added]: Dependency Test of Store in UserService
-9a078c5 [Added]: go module and sub module in go project
-2f93cf4 [Added]: Version of Library
-b72de03 [Added]: Project Structure
-545a459 [Added]: Section2 SubPackage to call to Section1 SubPackage
-32bbc90 [Added]: additional Go Project Structure
-b40e03c [Added]: Content for Building RESTFul APIs
-8310af8 [Added]: อธิบายการทำงานของ Router และ Middleware
+                        <h1><a class="header" href="#go-simple-project" id="go-simple-project">Go Simple Project</a></h1>
+<h2><a class="header" href="#create-demogo" id="create-demogo">Create demo.go</a></h2>
+<p>สร้างไฟล์ demo.go (ชื่อเดียวกับ module) ปกติคนที่เขียน go จะมีการจัดการ module และจะสร้าง file ที่ชื่อเดียวกับ module ขึ้นมา เพื่อเป็นจุดเริ่มต้นของ module นั้น ซึ่งไม่จำเป็นต้องมีก็ได้ โดย File นี้ปกติจะไม่ถูกใช้ในการรัน</p>
+<pre><code class="language-go">package demo    // กำหนดชื่อ package ให้เหมือนชื่อ module ที่ initial มา
+
+func Greeting() string {  // ประกาศ Function ชื่อ Greeting โดยมี Return Type เป็น String
+    return &quot;Hello World&quot;
+}
+</code></pre>
+<h2><a class="header" href="#ขอกำหนดเรือง-function-name" id="ขอกำหนดเรือง-function-name">ข้อกำหนดเรื่อง Function Name</a></h2>
+<p>เนื่องจาก Go มีข้อกำหนด เรื่อง Access Modifier ของแต่ละ Function โดยที่ Function ใดที่ต้องการให้ Access จากภายนอก Package ก็จะต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่ เช่น ในกรณีนี้ Greeting สามารถเข้าถึง/เรียกใช้ได้จาก Package อื่น ๆ ถ้าเปลี่ยนเป็น greeting ก็จะเรียกใช้ไม่ได้</p>
+<h2><a class="header" href="#create-maingo" id="create-maingo">Create main.go</a></h2>
+<p>สร้าง Folder cmd ขึ้นมาเพื่อรองรับการ execute จาก cmd และสร้าง file ชื่อว่า main.go ขึ้นมา</p>
+<pre><code class="language-go">package main    // package สำหรับ main.go จะเป็น main เสมอ
+
+import &quot;demo&quot;   // ต้องการใช้ Func Greeting() จาก module demo จึงต้อง import package demo เข้ามา 
+
+func main() {
+    demo.Greeting()  // เรียกใช้ Greeting ที่อยู่ใน package demo
+}
+</code></pre>
+<p>เนื่องจาก Package demo มีการกำหนด Function Greeting โดยที่มีตัวอักษรแรกเป็นตัวใหญ่ เลยสามารถเรียกใช้จาก Function main() ซึ่งอยู่ใน Package main  และเป็นคนละ Package  กับ Greeting ได้</p>
+<p>ถ้าเราเปลี่ยน Greeting เป็น greeting ตอน Compile go ก็จะด่าเรา</p>
+<h2><a class="header" href="#simple-project-structure" id="simple-project-structure">Simple Project Structure</a></h2>
+<pre><code class="language-tree">demo
+|- go.mod   // Package dependency for go project
+|- demo.go  // Default go file for each module
+|- cmd
+    |- main.go   // runable file with main function
 </code></pre>
 
                     </main>
@@ -193,9 +199,13 @@ b40e03c [Added]: Content for Building RESTFul APIs
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="../project/initial.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
-                            <a rel="next" href="project/initial.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../testing/SUMMARY.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -207,9 +217,13 @@ b40e03c [Added]: Content for Building RESTFul APIs
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="../project/initial.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
                 
-                    <a rel="next" href="project/initial.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../testing/SUMMARY.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -232,14 +246,14 @@ b40e03c [Added]: Content for Building RESTFul APIs
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         

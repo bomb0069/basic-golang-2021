@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Struct - Basic-Golang 2021</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../../favicon.png">
+        
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="../../project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="../../testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li class="chapter-item expanded "><a href="../../type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="../../type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../../type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="../../type/struct/SUMMARY.html" class="active"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="../../error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="../../day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Basic-Golang 2021</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#struct" id="struct">Struct</a></h1>
+<p>เป็น Type ลักษณะ Object ที่สามารถกำหนดได้เองว่าภายในจะประกอบไปด้วย attribute อะไรบ้าง</p>
+<h2><a class="header" href="#simple-struct" id="simple-struct">Simple struct</a></h2>
+<pre><code class="language-go">type user struct {
+    id   int
+    name string
+}
+
+func main() {
+    u1 := user{1, &quot;bomb0069&quot;}        // Go จะใส่ให้ตามลำดัับที่เรากำหนดไว้ กรณนี้ 1-&gt;id, bomb0069-&gt;name
+    u2 := user{id: 2, name: &quot;karan&quot;} // ระบุชื่อเลยว่าจะเอาเข้า attribute ไหน
+    u1.name = &quot;XXX&quot;                  // assign ค่าไปที่ attribute ได้
+    fmt.Printf(&quot;%v&quot;, u1)
+    fmt.Printf(&quot;%+v&quot;, u2)
+}
+</code></pre>
+<p>หรือเราจะสร้าง function เพื่อ new object ก็ได้</p>
+<pre><code class="language-go">func New(id int, name string) User {
+    return User{1, &quot;bomb0069&quot;}
+}
+
+func main() {
+    u1 := New(1, &quot;bomb0069&quot;)
+    fmt.Printf(&quot;%v&quot;, u1)
+}
+</code></pre>
+<h2><a class="header" href="#struct-with-struct-composition" id="struct-with-struct-composition">Struct with Struct Composition</a></h2>
+<pre><code class="language-go">type User struct {
+    Id   int
+    UserForNew   // User มีการ Embeded เอา UserForNew  เข้ามาด้วย
+}
+
+type User2 struct {
+    Id          int
+    UserForNew  UserForNew  // User2 ประกอบไปด้วย id กับ UserForNew
+}
+
+type UserForNew struct {
+    Name string
+}
+
+func New(id int, name string) User {
+    return User{1, UserForNew{&quot;bomb0069&quot;}}
+}
+
+func main() {
+    u1 := User{1, UserForNew{&quot;bomb0069&quot;}}
+    u2 := User2{2, UserForNew{&quot;karan&quot;}}
+    u3 := NewUser(&quot;bomb0069&quot;)
+    u1.Name = &quot;XXX&quot;   // กรณีมีการ Embeded เราสามารถเรียกใช้ Attribute ในของที่เรา Embeded มาได้โดยตรง 
+    fmt.Printf(&quot;%+v\n&quot;, u1)
+    fmt.Printf(&quot;%+v\n&quot;, u1.Name) // อ้างถึงตรง
+    fmt.Printf(&quot;%+v\n&quot;, u1.UserForNew.Name) // อ้่างถึงผ่าน UserForNew
+    fmt.Printf(&quot;%+v\n&quot;, u2.UserForNew.Name)
+    fmt.Printf(&quot;%+v\n&quot;, u3)
+
+    fmt.Printf(&quot;%+v\n&quot;, u3.Name)
+}
+
+[result]
+{Id:1 UserForNew:{Name:XXX}}  // ถึงจะเป็น Embeded เวลา print ก็ยังเห็นเหมือนมี UserForNew ครอบอยู่
+XXX
+XXX
+karan
+{Id:1 UserForNew:{Name:bomb0069}}
+bomb0069
+</code></pre>
+<h2><a class="header" href="#method-in-struct" id="method-in-struct">Method in Struct</a></h2>
+<p>เนื่องจาก Go ไม่ใช่ Object Oriented เพราะถึงมี Struct แต่ก็มีแค่ Attribute ไม่มี Behavior หรือ Method แต่เราสามารสร้าง function ไปผูกกับ struct เพื่อทำหน้าที่คล้าย method ของ OOP ได้</p>
+<pre><code class="language-go">type User struct {
+    Id int
+    Name string
+}
+
+// ประกาศว่า function นี้มี receiver type (หมายถึง struct ที่จะเอาไปผูกแล้วส่งมาเมื่อถูกเรียก) คือ User
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    // สามารถเอา u ที่เกิดจาก User มาเรียกใช้ printName ได้
+    u.printName()
+}
+</code></pre>
+<h2><a class="header" href="#method-of-struct-and-overwrite-method-in-go-for-embeded" id="method-of-struct-and-overwrite-method-in-go-for-embeded">Method of Struct and Overwrite Method in Go (for embeded)</a></h2>
+<pre><code class="language-go">type User struct {
+    Name string
+}
+
+type User2 struct {
+    Id int
+    User
+}
+
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func (user User2) printName() {
+    fmt.Println(&quot;User 2 := &quot;, user.Name)  // User2 สามารถเรียกใช้ Name ใน User ได้โดยตรงเพราะเป็น Embeded
+}
+
+func main() {
+    u2 := User2{2, User{&quot;karan&quot;}}
+    u2.printName()
+
+}
+
+[result]
+User 2 :=  karan
+</code></pre>
+<h2><a class="header" href="#method-of-struct-with-pointer" id="method-of-struct-with-pointer">Method of Struct with Pointer</a></h2>
+<p>Method ก่อนหน้านี้เป็นแค่ action ที่ทำผ่าน struct เท่านั้นไม่สามารถ เปลี่ยนแปลงค่าที่อยู่ใน Struct ได้ ลองดู Code ข้างล่างนี้</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user User) sleep() {
+    user.Name = &quot;XXXXX&quot;   // มีการ Set ค่า Name เป็น XXXXX
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    u.sleep()              // sleep เปลี่ยนค่า Name เป็น XXXXX
+    fmt.Println(u.Name)    // print ค่า Name ออกมา
+}
+
+[result]
+karan                      // ผลออกมาค่าไม่เปลี่ยน ยังเป็น karan เหมือนตอน New
+</code></pre>
+<p>เนื่องจาก receiver type ของ function sleep ส่ง User มาเป็น value ทำให้การเปลี่ยนแปลงภายในไม่มีผลกับภายนอก แก้โดยเพิ่ม * ไปตรง receiver type และ &amp; ไปตอน new object (อันหลังผมไม่ใส่ก็ยังใช้ได้ แต่พี่ปุ๋ยบอกว่าให้ใส่เพื่อเราจะได้รู้ว่าเราจะเอาไปใช้แบบไหน)</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user *User) sleep() {  // เพิ่ม * หน้า User เพื่อบอกว่าเป็น pointer
+    user.Name = &quot;XXXXX&quot;
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}     // สร้าง user แบบปกติ
+    u.sleep()
+    fmt.Println(&quot;User := &quot; + u.Name)
+
+    u2 := &amp;User{2, &quot;karan&quot;}   // สร้าง user แบบมี &amp; ด้านหน้า
+    u2.sleep()
+    fmt.Println(&quot;User2 :=&quot; + u2.Name)
+}
+
+[result]
+User := XXXXX   // ผลออกเหมือนกัน
+User2 := XXXXX
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../type/map.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../error/SUMMARY.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../type/map.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../error/SUMMARY.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
