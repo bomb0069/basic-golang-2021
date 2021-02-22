@@ -1,0 +1,6 @@
+[book]
+authors = ["Karan Sivarat"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Basic-Golang 2021"
