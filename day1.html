@@ -1,0 +1,805 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Day1 - Basic-Golang 2021</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="day1.html" class="active"><strong aria-hidden="true">1.</strong> Day1</a></li><li class="chapter-item expanded "><a href="day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Basic-Golang 2021</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#day-1" id="day-1">Day 1</a></h1>
+<h2><a class="header" href="#initial-go-project" id="initial-go-project">Initial Go Project</a></h2>
+<pre><code class="language-cmd">$go mod init demo
+</code></pre>
+<p>จะได้ file ชื่อ go.mod มาใน folder</p>
+<pre><code class="language-go">module demo
+
+go 1.15
+</code></pre>
+<h2><a class="header" href="#go-simple-project" id="go-simple-project">Go Simple Project</a></h2>
+<h3><a class="header" href="#create-demogo" id="create-demogo">Create demo.go</a></h3>
+<p>สร้างไฟล์ demo.go (ชื่อเดียวกับ module) ปกติคนที่เขียน go จะมีการจัดการ module และจะสร้าง file ที่ชื่อเดียวกับ module ขึ้นมา เพื่อเป็นจุดเริ่มต้นของ module นั้น ซึ่งไม่จำเป็นต้องมีก็ได้ โดย File นี้ปกติจะไม่ถูกใช้ในการรัน</p>
+<pre><code class="language-go">package demo    // กำหนดชื่อ package ให้เหมือนชื่อ module ที่ initial มา
+
+func Greeting() string {  // ประกาศ Function ชื่อ Greeting โดยมี Return Type เป็น String
+    return &quot;Hello World&quot;
+}
+</code></pre>
+<h3><a class="header" href="#ขอกำหนดเรือง-function-name" id="ขอกำหนดเรือง-function-name">ข้อกำหนดเรื่อง Function Name</a></h3>
+<p>เนื่องจาก Go มีข้อกำหนด เรื่อง Access Modifier ของแต่ละ Function โดยที่ Function ใดที่ต้องการให้ Access จากภายนอก Package ก็จะต้องขึ้นต้นด้วยตัวพิมพ์ใหญ่ เช่น ในกรณีนี้ Greeting สามารถเข้าถึง/เรียกใช้ได้จาก Package อื่น ๆ ถ้าเปลี่ยนเป็น greeting ก็จะเรียกใช้ไม่ได้</p>
+<h3><a class="header" href="#create-maingo" id="create-maingo">Create main.go</a></h3>
+<p>สร้าง Folder cmd ขึ้นมาเพื่อรองรับการ execute จาก cmd และสร้าง file ชื่อว่า main.go ขึ้นมา</p>
+<pre><code class="language-go">package main    // package สำหรับ main.go จะเป็น main เสมอ
+
+import &quot;demo&quot;   // ต้องการใช้ Func Greeting() จาก module demo จึงต้อง import package demo เข้ามา 
+
+func main() {
+    demo.Greeting()  // เรียกใช้ Greeting ที่อยู่ใน package demo
+}
+</code></pre>
+<p>เนื่องจาก Package demo มีการกำหนด Function Greeting โดยที่มีตัวอักษรแรกเป็นตัวใหญ่ เลยสามารถเรียกใช้จาก Function main() ซึ่งอยู่ใน Package main  และเป็นคนละ Package  กับ Greeting ได้</p>
+<p>ถ้าเราเปลี่ยน Greeting เป็น greeting ตอน Compile go ก็จะด่าเรา</p>
+<h3><a class="header" href="#simple-project-structure" id="simple-project-structure">Simple Project Structure</a></h3>
+<pre><code class="language-tree">demo
+|- go.mod   // Package dependency for go project
+|- demo.go  // Default go file for each module
+|- cmd
+    |- main.go   // runable file with main function
+</code></pre>
+<h2><a class="header" href="#testing-with-go" id="testing-with-go">Testing with Go</a></h2>
+<h3><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h3>
+<p>ลักษณะของ File Test ใน Go</p>
+<ul>
+<li>อยู่ที่เดียวกับ Production Code</li>
+<li>ใช้ชื่อ Package เดียวกัน ตามด้วย _test</li>
+<li>Function Test ต้องขึ้นต้นด้วยคำว่า &quot;Test&quot; เสมอ</li>
+<li>ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง</li>
+</ul>
+<p>ตย. demo_test.go</p>
+<pre><code class="language-go">package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
+                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
+
+import (
+    &quot;demo&quot;          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
+    &quot;testing&quot;       
+)
+
+func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
+                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
+    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
+    r = demo.Greeting()
+    if r != &quot;Hello World&quot; {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
+        t.Errorf(&quot;Error with %v&quot;, r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
+    }
+}
+</code></pre>
+<h3><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h3>
+<p>การรัน Test ใช้ Command</p>
+<pre><code class="language-cmd">$go test    // มันจะหาไฟล์ Testให้
+</code></pre>
+<p>ต้องการรัน Test ทั้งหมด ใน Sub-Folder</p>
+<pre><code class="language-cmd">$go test ./...
+
+ok    demo    (cached)              // ขึ้นคำว่า cached แปลว่า เคยรันแล้ว จะรันใหม่ก็ต่อเมื่อ Production Code เปลี่ยน
+?     demo/cmd   [no test files]    // แจ้งว่าไม่มี File test
+</code></pre>
+<p>เราสามารถเช็ค Coverage ของเทสที่เราเขียนได้โดยการรัน</p>
+<pre><code class="language-cmd">$go test -cover
+
+PASS
+coverage: 10.0% of statements
+ok    demo    0.339s
+</code></pre>
+<p>หรือเราสามารถให้เก็บเป็น File ได้</p>
+<pre><code class="language-cmd">$go test -coverprofile=coverage.out
+
+PASS
+coverage: 10.0% of statements
+ok      demo    0.228s
+</code></pre>
+<p>ซึ่งจะได้ผลลัพท์เก็บใน File coverage.out</p>
+<pre><code class="language-text">mode: set
+demo/demo.go:3.24,5.2 1 1
+</code></pre>
+<p>หรือถ้าเราอยากเห็น Report สวยงาม แถมบอกด้วยว่าบรรทัดไหนผ่านการเทสไหม ก็สามารถใช้</p>
+<pre><code class="language-cmd">go tool cover -html=coverage.out
+</code></pre>
+<p>มันจะเปิด Browser ขึ้นมาพร้อม coverage report เลย</p>
+<h3><a class="header" href="#การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction" id="การรัน-benchmark-เพือเทียบประสิทธิภาพของfunction">การรัน Benchmark เพื่อเทียบประสิทธิภาพของFunction</a></h3>
+<p>เราสามารถเปรียบเทียบความเร็วในการทำงานของ App ได้ด้วยการเขียน Benchmark แล้วรัน</p>
+<p>ตย. เขียน Benchmark ใน test file demo_test.go</p>
+<pre><code class="language-go">func BenchmarkHello(b *testing.B) {
+    for i := 0; i &lt; b.N; i++ {
+        demo.Greeting()
+    }
+}
+
+func BenchmarkHello2(b *testing.B) {
+    for i := 0; i &lt; b.N; i++ {
+        demo.Greeting2()
+    }
+}
+</code></pre>
+<p>แล้วรันผ่านคำสั่ง</p>
+<pre><code class="language-cmd">$go test -bench .
+goos: darwin            // บอกว่าใช้  OS อะไร darwin = macOS
+goarch: amd64           // บอก CPU
+pkg: demo
+BenchmarkHello-4        1000000000             0.347 ns/op      // บอกว่ารันใช้เวลาเท่าไหร่ต่อ 1 Operation
+BenchmarkHello2-4       1000000000             0.366 ns/op
+PASS
+ok      demo    1.288s
+</code></pre>
+<h2><a class="header" href="#go-type" id="go-type">Go Type</a></h2>
+<h3><a class="header" href="#alias-type" id="alias-type">Alias TYPE</a></h3>
+<p>เราสามารถสร้าง Type ของตัวแปลใน Go ใหม่ได้ผ่าน  คำสั่ง type</p>
+<pre><code class="language-go">    type MONTH int  // สร้าง type ใหม่ที่ชื่อว่า MONTH โดยอ้างอิงจาก int
+
+    var january MONTH // สร้างตัวแปลชื่อ january เป็นประเภท MONTH
+</code></pre>
+<h3><a class="header" href="#example-of-error" id="example-of-error">Example of Error</a></h3>
+<p>เนื่องจาก Go เป็นภาษาที่ return type ของ function สามารถทำได้มากกว่า 1 ตัวแปร เช่น เราอาจจะอยากสร้าง function ที่ return int และ string ไปพร้อมกัน ก็ได้ และสิ่งที่ Go ไม่มีคือ exception เพราะฉะนั้น ถ้า function ของเราต้องรองรับกรณีที่ทำได้สำเร็จจะ return แบบนึง ถ้า error จะ return แบบนึงก็สามารถที่จะสร้าง functiom ที่ return หลาย ๆ ตัวแปลได้</p>
+<pre><code class="language-go">package demo
+
+import (
+    &quot;errors&quot;
+    &quot;fmt&quot;
+)
+
+// เป็น function ที่รับ int และ return int กับ error
+func someShort(x int) (int, error) {
+
+    err := errors.New(&quot;Normal error&quot;)
+
+    // ถ้าเราเขียนแบบ short return เวลาจะส่งค่ากลับก็ใช้ return ตามด้วยลำดับของตัวแปลลตามรูปแบบที่เรากำหนดด้านบน 
+    return 0, err
+}
+
+// เป็น function ที่ return int กับ error เหมือนกัน 
+// ต่างกันตรงที่กำหนดชื่อตัวแปรไว้เลยว่า
+// ค่าที่เป็น int จะ return ผ่านตัวแปร result และ error return ผ่าน err
+func some(x int) (result int, err error) {
+    
+    // เราสามารถ set ค่าให้ตัวแปร err ได้
+    err = errors.New(&quot;Normal error&quot;)
+
+    // ค่าตัวแปร result, err จะถูก return กลับไป
+    // ค่า result จะมีค่าเป็น 0 ตาม default ของภาษา
+    return
+}
+
+func main() {
+
+    // การรับค่า 2 ตัวแปรจาก function
+    a, err := some(5)
+
+    // การเลือกรับเฉพาะตัวแปร b จาก result โดยไม่สน err
+    // ในเมื่อการประกาศตัวแปรทุกตัวใน go ต้องถูกเอาไปใช้ไม่งั้นจะ compile error ตัวไหนที่ไม่ได้ใช้จึงต้องใส่เป็น _ ไว้ก่อน 
+    b, _ := some(5)
+    
+    // การเลือกรับเฉพาะตัวแปร err จาก result โดยไม่สน ตัวแปรแรก
+    _, err2 := some(5)
+
+}
+</code></pre>
+<p>คำถามคือ ถ้าเราเขียน  function ที่ return error มาด้วย เราควรจะเอา error ไว้ตำแหน่งไหน พี่ปุ๋ยเลยให้ดู ตัวอย่างจากพวก Library ที่อยู่ใน golang website ก็จะเห็นว่าเขาไว้เป็นตัวสุดท้ายเสมอเลย เพราะฉะนั้นเราจะเอาภาษาอะไรมาพัฒนา เราจำเป็นต้องแนวคิด แนวการเขียนของภาษานั้น ๆ ด้วย</p>
+<h2><a class="header" href="#collection-type-in-go" id="collection-type-in-go">Collection Type in Go</a></h2>
+<p>ใน Go มี Type เป็น Collection อยู่ 3 ประเภท</p>
+<ul>
+<li>Array :   น่าจะรู้กันอยู่ ไม่พูดเยอะ</li>
+<li>Slice :   Array ที่ไม่ต้องกำหนดขนาด</li>
+<li>Map :     Collection แบบ Key, Value</li>
+</ul>
+<h3><a class="header" href="#array-in-go" id="array-in-go">Array in Go</a></h3>
+<pre><code class="language-go">// ประกาศตัวแปรที่ชื่อว่า numbers เป็น Array ของ int ที่มีขนาดเท่ากับ 5
+var numbers [5]int
+
+// การอ้างถึง Array ทำได้ใน []
+numbers[0] = 1
+numbers[1] = 2
+
+// การประกาศ Array ของ String โดยสร้างจากค่าตั้งต้นเลย
+var colors = [2]string{&quot;Red&quot;, &quot;Blue&quot;}
+</code></pre>
+<h4><a class="header" href="#รูปแบบของ-for-loop" id="รูปแบบของ-for-loop">รูปแบบของ For Loop</a></h4>
+<p>ใน Go มี Loop แค่แบบเดียวคือ Loop For เพราะฉะนั้นเวลาจะใช้ต้องไปประยุกต์เอาเอง ว่าจะใช้งานแบบไหน เช่นตัวอย่างของการเอา For Loop ไปใช้กับข้อมูลใน Array</p>
+<pre><code class="language-go">// Loop จาก Len ของ Array แล้วก็อ้างถึงข้อมูลตามตำแหน่งในแต่ละรอบ
+for i := 0; i &lt; len(colors); i++ {
+    fmt.Println(colors[i])
+}
+
+// ใช้ Loop ร่วมกับ  range เพื่อแกะข้อมูลออกมาทีละตัว
+for i, v := range colors {
+    // range จะ return ค่ากลับมา 2 ตัวคือ Index และ Value  ถ้าไม่อยากได้ก็สามารถใช้  _ ได้
+    fmt.Println(i, &quot; &quot;, v)
+}
+
+// infinite loop
+for {
+
+}
+
+// for 5 loop อันนี้เอาไปประยกต์ใช้กับ while loop ได้
+var i = 0
+for i &lt; 5 {
+    i++
+    log.Printf(&quot;Logging %v&quot;, i)
+}
+
+2021/01/XX 16:41:11 Logging 1
+2021/01/XX 16:41:11 Logging 2
+2021/01/XX 16:41:11 Logging 3
+2021/01/XX 16:41:11 Logging 4
+2021/01/XX 16:41:11 Logging 5
+</code></pre>
+<h3><a class="header" href="#slice-in-go" id="slice-in-go">Slice in Go</a></h3>
+<p>คือ Loop ที่ไม่ต้องกำหนดขนาดตอนตั้งต้น ที่เหลือเหมือน Array</p>
+<pre><code class="language-go">// Array
+var colors = [5]string{&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Yellow&quot;, &quot;Black&quot;}
+
+// Slice
+var colorSlice = []string{&quot;Red&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Yellow&quot;, &quot;Black&quot;}
+</code></pre>
+<p>เราสามารถสร้าง Slice ได้ด้วยคำสั่ง make พร้อมระบุขนาดเบื้องต้นได้</p>
+<pre><code class="language-go">// Make
+var colorMake = make([]string, 5)
+</code></pre>
+<p>ลอง Print ออกมาดู</p>
+<pre><code class="language-go">fmt.Println(&quot;colors =     &quot;, colors)
+fmt.Println(&quot;colorSlice =     &quot;, colorSlice)
+fmt.Println(&quot;colorMake =     &quot;, colorMake)
+
+colors =         [Red Blue Green Yellow Black]
+colorSlice =     [Red Blue Green Yellow Black]
+colorMake =      [    ]
+</code></pre>
+<p>เราสามารถตัดข้อมูลจาก Array มาเป็น Slice อีกตัวได้โดยระบุตำแหน่ง</p>
+<pre><code class="language-go">//  เอาข้อมูลจากตำแหน่งที่ 0 ถึงตัวก่อนตำแหน่งที่ 2 
+a := colors[0:2]
+fmt.Println(&quot;a = &quot;, a)
+
+[result]
+a =  [Red Blue]
+</code></pre>
+<p>เราสามารถเพิ่มสมาชิกเข้าไปใน Slice ได้ผ่านคำสั่ง append</p>
+<pre><code class="language-go">a = append(a, &quot;XXX&quot;)
+fmt.Println(&quot;a = &quot;, a)
+
+[result]
+a =  [Red Blue XXX]
+</code></pre>
+<pre><code class="language-go">a = append(a, &quot;YYY&quot;)
+fmt.Println(&quot;a = &quot;, a)
+
+[result]
+a =  [Red Blue XXX YYY]
+</code></pre>
+<p>คำถามที่สำคัญที่คนเขียน Go ต้องรู้คือ ถ้าเราแก้ไขข้อมูลใน Slice a (ซึ่งเกิดจาก Array colors) จะมีผลต่อข้อมูลใน Array colors ไหมนะลองแก้ตัวแรกดู</p>
+<pre><code class="language-go">a[0] = &quot;New&quot;
+fmt.Println(&quot;colors,a = &quot;, colors, a)
+
+[result]
+colors,a =  [New Blue XXX YYY Black] [New Blue XXX YYY]
+</code></pre>
+<p>จะเห็นได้ว่า Slice a ใช้ที่เก็บเดียวกันกับ Array colors เนื่องจากใช้ pointer เดียวกัน เพราะฉะนั้น</p>
+<ul>
+<li>ตอนที่เรา append XXX เข้าไปต่อท้าย a ข้อมูลก็จะไปทับตัวที่อยู่ใน colors ด้วย</li>
+</ul>
+<pre><code class="language-text">จากที่
+
+        |------|------|-------|--------|-------|
+        | Red  | Blue | Green | Yellow | Black |
+        |------|------|-------|--------|-------|
+        ^                                      ^
+        |               colors                 |
+        
+        ^             ^
+        |      a      |
+
+พอเราสั่ง append a ด้วย XXX ก็เลยกลายเป็น 
+
+        |------|------|-------|--------|-------|
+        | Red  | Blue |  XXX  | Yellow | Black |
+        |------|------|-------|--------|-------|
+        ^                                      ^
+        |               colors                 |
+        
+        ^                     ^
+        |          a          |
+
+เพราะมันไปต่อจาก a เดิม ซึ่งแปลว่า colors ก็ถูกแก้ด้วย
+</code></pre>
+<p>เราสามารถเรียงลำดับของที่อยู่ใน Slice ได้ด้วย</p>
+<pre><code class="language-go">var intSlice = []int{11, 3, 4, 1, 5, 6, 2}
+sort.Ints(intSlice)   // เอา Slice มาเรียงลำดับตามตัวเลข
+fmt.Println(intSlice)
+
+var stringSlice = []string{&quot;wat&quot;, &quot;sivarat&quot;, &quot;bomb&quot;, &quot;karan&quot;}
+sort.Strings(stringSlice)   // เอา Slice มาเรียงลำดับตามตัวอักษร
+fmt.Println(stringSlice)
+
+[result]
+[1 2 3 4 5 6 11]
+[bomb karan sivarat wat]
+</code></pre>
+<h3><a class="header" href="#map-in-go" id="map-in-go">Map in Go</a></h3>
+<p>Collection Type สุดท้ายใน Go คือ Map ซึ่งมันก็คือการเก็บข้อมูลเป็นคู่แบบ Key, Value ที่เราคุ้นเคยเนี่ยแหละ</p>
+<pre><code class="language-go">numbers := make(map[string]int)
+numbers[&quot;one&quot;] = 1
+fmt.Println(&quot;Numbers =&quot;, numbers)
+</code></pre>
+<p>ในกรณีที่เราต้องการอ่านค่าจาก Key ก็ทำได้</p>
+<pre><code class="language-go">n1 := numbers[&quot;one&quot;]
+fmt.Println(&quot;n1 =&quot;, n1)
+
+[result]
+n1 = 1
+</code></pre>
+<p>กรณีไม่มีมันจะเอา Zero Value (คืออันเดียวกับ Default Value) มาใส่ให้</p>
+<pre><code class="language-go">n2 := numbers[&quot;two&quot;]
+fmt.Println(&quot;n2 =&quot;, n2)
+
+[result]
+n2 = 0
+</code></pre>
+<p>ซึ่งถ้าเราต้องการตรวจสอบก่อนว่ามีค่าหรือเปล่าก็สามารถเช็ค error ของ map ได้</p>
+<pre><code class="language-go">if e2, found := numbers[&quot;two&quot;]; found { // ถ้าเจอ ตัวแปร found จะเป็น true
+    fmt.Println(&quot;Found = &quot;, e2)
+} else {
+    fmt.Println(&quot;Not Found&quot;)
+}
+
+[result]
+Not Found
+</code></pre>
+<h2><a class="header" href="#error-vs-defer" id="error-vs-defer">Error vs Defer</a></h2>
+<p>เนื่องจากใน Go ไม่มี exception เพราะฉะนั้นในกรณีที่เกิดปัญหาตอน runtime แล้วต้องการ Handle case ที่เกิดขึ้น เช่น ต้องปิด connection Database ถึงแม้ว่าจะเกิด Run Time Error ก็ตาม เราสามารถทำได้โดยการสร้าง Function ที่จะทำงานทุกครั้ง เมื่อ Function หลักของเราทำงานเสร็จ แล้วเช็คว่าเกิด panic ขึ้นได้ ผ่าน recover function</p>
+<pre><code class="language-go">func main() {
+
+    deferAtEnd()
+
+    deferWhenError()
+
+}
+
+func deferAtEnd() {
+    fmt.Println(&quot;deferAtEnd - Start&quot;)
+    // ประกาศว่าให้ เรียก panicHandler หลังจบการทำงานของ function ส่วนใหญ่เขียนไว้เพื่อ Close Resource ที่ร้องไว้ เมื่อทำงานเสร็จ
+    defer panicHandler()
+    fmt.Println(&quot;deferAtEnd - After defer panicHandler&quot;)
+
+    fmt.Println(&quot;deferAtEnd - doSomething&quot;)
+
+    fmt.Println(&quot;deferAtEnd - Start&quot;)
+}
+
+func deferWhenError() {
+    fmt.Println(&quot;deferWhenError - Start&quot;)
+    defer panicHandler()
+    fmt.Println(&quot;deferWhenError - After defer panicHandler&quot;)
+
+    b, err := ioutil.ReadFile(&quot;try_panic.go&quot;)
+    fmt.Println(&quot;deferWhenError - After readfile&quot;)
+    if err != nil {
+        fmt.Println(&quot;deferWhenError - before panic&quot;)
+        // call function panic เพื่อบอกว่าเกิด error ณ runtime
+        panic(&quot;some error&quot;)
+        fmt.Println(&quot;deferWhenError - after panic&quot;)
+    }
+    // จาก code จะเกิด panic และไม่เข้ามาทำงานในส่วนนี้
+    fmt.Println(string(b))
+    fmt.Println(&quot;deferAtEnd - After doSomething&quot;)
+
+    fmt.Println(&quot;deferWhenError - Start&quot;)
+}
+
+// function ที่จะ Handle ทุกครั้งที่ deferAtEnd และ deferWithError ทำงานเสร็จ
+func panicHandler() {
+    // อ่าน error จาก function recover
+    err := recover()
+    // เช็คว่ามี panic ไหมโดยดุจาก err ถ้าไม่เกิด panic ก็ไม่เข้าใน if
+    if err == &quot;some error&quot; {
+        fmt.Println(&quot;panicHandler - Try to recover from panic&quot;)
+    }
+    fmt.Println(&quot;panicHandler - Do it at the end&quot;)    
+}
+</code></pre>
+<p>เพราะฉะนั้น</p>
+<pre><code class="language-text">Error is for application error, Defer for run time and need to recover state
+</code></pre>
+<h2><a class="header" href="#struct" id="struct">Struct</a></h2>
+<p>เป็น Type ลักษณะ Object ที่สามารถกำหนดได้เองว่าภายในจะประกอบไปด้วย attribute อะไรบ้าง</p>
+<h3><a class="header" href="#simple-struct" id="simple-struct">Simple struct</a></h3>
+<pre><code class="language-go">type user struct {
+    id   int
+    name string
+}
+
+func main() {
+    u1 := user{1, &quot;bomb0069&quot;}        // Go จะใส่ให้ตามลำดัับที่เรากำหนดไว้ กรณนี้ 1-&gt;id, bomb0069-&gt;name
+    u2 := user{id: 2, name: &quot;karan&quot;} // ระบุชื่อเลยว่าจะเอาเข้า attribute ไหน
+    u1.name = &quot;XXX&quot;                  // assign ค่าไปที่ attribute ได้
+    fmt.Printf(&quot;%v&quot;, u1)
+    fmt.Printf(&quot;%+v&quot;, u2)
+}
+</code></pre>
+<p>หรือเราจะสร้าง function เพื่อ new object ก็ได้</p>
+<pre><code class="language-go">func New(id int, name string) User {
+    return User{1, &quot;bomb0069&quot;}
+}
+
+func main() {
+    u1 := New(1, &quot;bomb0069&quot;)
+    fmt.Printf(&quot;%v&quot;, u1)
+}
+</code></pre>
+<h3><a class="header" href="#struct-with-struct-composition" id="struct-with-struct-composition">Struct with Struct Composition</a></h3>
+<pre><code class="language-go">type User struct {
+    Id   int
+    UserForNew   // User มีการ Embeded เอา UserForNew  เข้ามาด้วย
+}
+
+type User2 struct {
+    Id          int
+    UserForNew  UserForNew  // User2 ประกอบไปด้วย id กับ UserForNew
+}
+
+type UserForNew struct {
+    Name string
+}
+
+func New(id int, name string) User {
+    return User{1, UserForNew{&quot;bomb0069&quot;}}
+}
+
+func main() {
+    u1 := User{1, UserForNew{&quot;bomb0069&quot;}}
+    u2 := User2{2, UserForNew{&quot;karan&quot;}}
+    u3 := NewUser(&quot;bomb0069&quot;)
+    u1.Name = &quot;XXX&quot;   // กรณีมีการ Embeded เราสามารถเรียกใช้ Attribute ในของที่เรา Embeded มาได้โดยตรง 
+    fmt.Printf(&quot;%+v\n&quot;, u1)
+    fmt.Printf(&quot;%+v\n&quot;, u1.Name) // อ้างถึงตรง
+    fmt.Printf(&quot;%+v\n&quot;, u1.UserForNew.Name) // อ้่างถึงผ่าน UserForNew
+    fmt.Printf(&quot;%+v\n&quot;, u2.UserForNew.Name)
+    fmt.Printf(&quot;%+v\n&quot;, u3)
+
+    fmt.Printf(&quot;%+v\n&quot;, u3.Name)
+}
+
+[result]
+{Id:1 UserForNew:{Name:XXX}}  // ถึงจะเป็น Embeded เวลา print ก็ยังเห็นเหมือนมี UserForNew ครอบอยู่
+XXX
+XXX
+karan
+{Id:1 UserForNew:{Name:bomb0069}}
+bomb0069
+</code></pre>
+<h3><a class="header" href="#method-in-struct" id="method-in-struct">Method in Struct</a></h3>
+<p>เนื่องจาก Go ไม่ใช่ Object Oriented เพราะถึงมี Struct แต่ก็มีแค่ Attribute ไม่มี Behavior หรือ Method แต่เราสามารสร้าง function ไปผูกกับ struct เพื่อทำหน้าที่คล้าย method ของ OOP ได้</p>
+<pre><code class="language-go">type User struct {
+    Id int
+    Name string
+}
+
+// ประกาศว่า function นี้มี receiver type (หมายถึง struct ที่จะเอาไปผูกแล้วส่งมาเมื่อถูกเรียก) คือ User
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    // สามารถเอา u ที่เกิดจาก User มาเรียกใช้ printName ได้
+    u.printName()
+}
+</code></pre>
+<h3><a class="header" href="#method-of-struct-and-overwrite-method-in-go-for-embeded" id="method-of-struct-and-overwrite-method-in-go-for-embeded">Method of Struct and Overwrite Method in Go (for embeded)</a></h3>
+<pre><code class="language-go">type User struct {
+    Name string
+}
+
+type User2 struct {
+    Id int
+    User
+}
+
+func (user User) printName() {
+    fmt.Println(&quot;User := &quot;, user.Name)
+}
+
+func (user User2) printName() {
+    fmt.Println(&quot;User 2 := &quot;, user.Name)  // User2 สามารถเรียกใช้ Name ใน User ได้โดยตรงเพราะเป็น Embeded
+}
+
+func main() {
+    u2 := User2{2, User{&quot;karan&quot;}}
+    u2.printName()
+
+}
+
+[result]
+User 2 :=  karan
+</code></pre>
+<h3><a class="header" href="#method-of-struct-with-pointer" id="method-of-struct-with-pointer">Method of Struct with Pointer</a></h3>
+<p>Method ก่อนหน้านี้เป็นแค่ action ที่ทำผ่าน struct เท่านั้นไม่สามารถ เปลี่ยนแปลงค่าที่อยู่ใน Struct ได้ ลองดู Code ข้างล่างนี้</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user User) sleep() {
+    user.Name = &quot;XXXXX&quot;   // มีการ Set ค่า Name เป็น XXXXX
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}
+    u.sleep()              // sleep เปลี่ยนค่า Name เป็น XXXXX
+    fmt.Println(u.Name)    // print ค่า Name ออกมา
+}
+
+[result]
+karan                      // ผลออกมาค่าไม่เปลี่ยน ยังเป็น karan เหมือนตอน New
+</code></pre>
+<p>เนื่องจาก receiver type ของ function sleep ส่ง User มาเป็น value ทำให้การเปลี่ยนแปลงภายในไม่มีผลกับภายนอก แก้โดยเพิ่ม * ไปตรง receiver type และ &amp; ไปตอน new object (อันหลังผมไม่ใส่ก็ยังใช้ได้ แต่พี่ปุ๋ยบอกว่าให้ใส่เพื่อเราจะได้รู้ว่าเราจะเอาไปใช้แบบไหน)</p>
+<pre><code class="language-go">type User struct {
+    Id   int
+    Name string
+}
+
+func (user *User) sleep() {  // เพิ่ม * หน้า User เพื่อบอกว่าเป็น pointer
+    user.Name = &quot;XXXXX&quot;
+}
+
+func main() {
+    u := User{2, &quot;karan&quot;}     // สร้าง user แบบปกติ
+    u.sleep()
+    fmt.Println(&quot;User := &quot; + u.Name)
+
+    u2 := &amp;User{2, &quot;karan&quot;}   // สร้าง user แบบมี &amp; ด้านหน้า
+    u2.sleep()
+    fmt.Println(&quot;User2 :=&quot; + u2.Name)
+}
+
+[result]
+User := XXXXX   // ผลออกเหมือนกัน
+User2 := XXXXX
+</code></pre>
+<h2><a class="header" href="#backlog-of-content" id="backlog-of-content">Backlog of Content</a></h2>
+<p>List ของ git log จากทีี่ลองทำตามใน Class</p>
+<pre><code class="language-text">174a278 [Added]: Interface of All
+e00f4ce [Added]: Interface of Primitive Type Int
+6b22fcd [Added]: Interface of Stringer
+f876801 [Removed]: Stringer Interface
+8b92209 [Added]: JSON Example and Exercise for add and list user
+32731ca [Reorganized]: Folder Structure and move all of workshop into day1
+4f7d6f4 [Init]: New task module for homework
+73ee837 [Moved]: input.json into execise for initial data file
+cef04a1 [Added]: Initial Cli with method NumberOfMember and AddMember
+648726e [Added]: feature getMember with id
+f5534c7 [Refactor]: Test to compare object instead of primitive
+cd06b4a [Added]: Reviews Session of Day2
+a97828c [Added]: Dependency Test of Store in UserService
+9a078c5 [Added]: go module and sub module in go project
+2f93cf4 [Added]: Version of Library
+b72de03 [Added]: Project Structure
+545a459 [Added]: Section2 SubPackage to call to Section1 SubPackage
+32bbc90 [Added]: additional Go Project Structure
+b40e03c [Added]: Content for Building RESTFul APIs
+8310af8 [Added]: อธิบายการทำงานของ Router และ Middleware
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="day2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a rel="next" href="day2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
