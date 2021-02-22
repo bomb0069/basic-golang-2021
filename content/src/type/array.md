@@ -46,3 +46,7 @@ for i < 5 {
 2021/01/XX 16:41:11 Logging 4
 2021/01/XX 16:41:11 Logging 5
 ```
+
+## Array of func
+
+[Array of functions to as argument in Golang](https://stackoverflow.com/questions/50913022/array-of-functions-to-as-argument-in-golang)

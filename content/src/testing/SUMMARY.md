@@ -81,36 +81,3 @@ go tool cover -html=coverage.out
 ```
 
 มันจะเปิด Browser ขึ้นมาพร้อม coverage report เลย
-
-## การรัน Benchmark เพื่อเทียบประสิทธิภาพของFunction
-
-เราสามารถเปรียบเทียบความเร็วในการทำงานของ App ได้ด้วยการเขียน Benchmark แล้วรัน
-
-ตย. เขียน Benchmark ใน test file demo_test.go
-
-```go
-func BenchmarkHello(b *testing.B) {
-    for i := 0; i < b.N; i++ {
-        demo.Greeting()
-    }
-}
-
-func BenchmarkHello2(b *testing.B) {
-    for i := 0; i < b.N; i++ {
-        demo.Greeting2()
-    }
-}
-```
-
-แล้วรันผ่านคำสั่ง
-
-```cmd
-$go test -bench .
-goos: darwin            // บอกว่าใช้  OS อะไร darwin = macOS
-goarch: amd64           // บอก CPU
-pkg: demo
-BenchmarkHello-4        1000000000             0.347 ns/op      // บอกว่ารันใช้เวลาเท่าไหร่ต่อ 1 Operation
-BenchmarkHello2-4       1000000000             0.366 ns/op
-PASS
-ok      demo    1.288s
-```
