@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Testing in Golang - Basic-Golang 2021</title>
+        <title>System - Basic-Golang 2021</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="../project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="../testing/SUMMARY.html" class="active"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/testing.html"><strong aria-hidden="true">1.3.1.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../testing/naming.html"><strong aria-hidden="true">1.3.2.</strong> Naming and Convention</a></li><li class="chapter-item expanded "><a href="../testing/benchmark.html"><strong aria-hidden="true">1.3.3.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../testing/profile.html"><strong aria-hidden="true">1.3.4.</strong> Profiling</a></li><li class="chapter-item expanded "><a href="../testing/sub.html"><strong aria-hidden="true">1.3.5.</strong> Sub Testing and Sub Benchmarking</a></li></ol></li><li class="chapter-item expanded "><a href="../type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="../type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="../type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="../error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="../day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li><li class="chapter-item expanded "><a href="../system/SUMMARY.html"><strong aria-hidden="true">3.</strong> System</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../day1.html"><strong aria-hidden="true">1.</strong> Day1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/initial.html"><strong aria-hidden="true">1.1.</strong> Initial Go Project</a></li><li class="chapter-item expanded "><a href="../project/simple.html"><strong aria-hidden="true">1.2.</strong> Go Simple Project</a></li><li class="chapter-item expanded "><a href="../testing/SUMMARY.html"><strong aria-hidden="true">1.3.</strong> Testing in Golang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../testing/testing.html"><strong aria-hidden="true">1.3.1.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../testing/naming.html"><strong aria-hidden="true">1.3.2.</strong> Naming and Convention</a></li><li class="chapter-item expanded "><a href="../testing/benchmark.html"><strong aria-hidden="true">1.3.3.</strong> Benchmarking</a></li><li class="chapter-item expanded "><a href="../testing/profile.html"><strong aria-hidden="true">1.3.4.</strong> Profiling</a></li><li class="chapter-item expanded "><a href="../testing/sub.html"><strong aria-hidden="true">1.3.5.</strong> Sub Testing and Sub Benchmarking</a></li></ol></li><li class="chapter-item expanded "><a href="../type/SUMMARY.html"><strong aria-hidden="true">1.4.</strong> Go Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/collection.html"><strong aria-hidden="true">1.4.1.</strong> Collection Type</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../type/array.html"><strong aria-hidden="true">1.4.1.1.</strong> Array</a></li><li class="chapter-item expanded "><a href="../type/slice.html"><strong aria-hidden="true">1.4.1.2.</strong> Slice</a></li><li class="chapter-item expanded "><a href="../type/map.html"><strong aria-hidden="true">1.4.1.3.</strong> Map</a></li></ol></li><li class="chapter-item expanded "><a href="../type/struct/SUMMARY.html"><strong aria-hidden="true">1.4.2.</strong> Struct</a></li></ol></li><li class="chapter-item expanded "><a href="../error/SUMMARY.html"><strong aria-hidden="true">1.5.</strong> Error and Defer</a></li></ol></li><li class="chapter-item expanded "><a href="../day2.html"><strong aria-hidden="true">2.</strong> Day2</a></li><li class="chapter-item expanded "><a href="../system/SUMMARY.html" class="active"><strong aria-hidden="true">3.</strong> System</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,80 +163,23 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#testing-in-golang" id="testing-in-golang">Testing in Golang</a></h1>
-<h2><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h2>
-<p>ลักษณะของ File Test ใน Go</p>
+                        <h1><a class="header" href="#system" id="system">System</a></h1>
+<h2><a class="header" href="#reference" id="reference">Reference</a></h2>
 <ul>
-<li>อยู่ที่เดียวกับ Production Code</li>
-<li>ใช้ชื่อ Package เดียวกัน ตามด้วย _test</li>
-<li>Function Test ต้องขึ้นต้นด้วยคำว่า &quot;Test&quot; เสมอ</li>
-<li>ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง</li>
+<li><a href="https://stackoverflow.com/questions/7052693/how-to-get-the-name-of-a-function-in-go">How to get the name of a function in Go?</a></li>
+<li><a href="https://golang.org/pkg/time/#Sleep">Time Package</a></li>
 </ul>
-<p>ตย. demo_test.go</p>
-<pre><code class="language-go">package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
-                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
-
-import (
-    &quot;demo&quot;          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
-    &quot;testing&quot;       
-)
-
-func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
-                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
-    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
-    r = demo.Greeting()
-    if r != &quot;Hello World&quot; {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
-        t.Errorf(&quot;Error with %v&quot;, r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
-    }
-}
-</code></pre>
-<h2><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h2>
-<p>การรัน Test ใช้ Command</p>
-<pre><code class="language-cmd">$go test    // มันจะหาไฟล์ Testให้
-</code></pre>
-<p>ต้องการรัน Test ทั้งหมด ใน Sub-Folder</p>
-<pre><code class="language-cmd">$go test ./...
-
-ok    demo    (cached)              // ขึ้นคำว่า cached แปลว่า เคยรันแล้ว จะรันใหม่ก็ต่อเมื่อ Production Code เปลี่ยน
-?     demo/cmd   [no test files]    // แจ้งว่าไม่มี File test
-</code></pre>
-<p>เราสามารถเช็ค Coverage ของเทสที่เราเขียนได้โดยการรัน</p>
-<pre><code class="language-cmd">$go test -cover
-
-PASS
-coverage: 10.0% of statements
-ok    demo    0.339s
-</code></pre>
-<p>หรือเราสามารถให้เก็บเป็น File ได้</p>
-<pre><code class="language-cmd">$go test -coverprofile=coverage.out
-
-PASS
-coverage: 10.0% of statements
-ok      demo    0.228s
-</code></pre>
-<p>ซึ่งจะได้ผลลัพท์เก็บใน File coverage.out</p>
-<pre><code class="language-text">mode: set
-demo/demo.go:3.24,5.2 1 1
-</code></pre>
-<p>หรือถ้าเราอยากเห็น Report สวยงาม แถมบอกด้วยว่าบรรทัดไหนผ่านการเทสไหม ก็สามารถใช้</p>
-<pre><code class="language-cmd">go tool cover -html=coverage.out
-</code></pre>
-<p>มันจะเปิด Browser ขึ้นมาพร้อม coverage report เลย</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../project/simple.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../day2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="../testing/testing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -246,15 +189,11 @@ demo/demo.go:3.24,5.2 1 1
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../project/simple.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../day2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="../testing/testing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 
