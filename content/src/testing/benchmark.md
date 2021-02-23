@@ -37,3 +37,5 @@ ok      demo    1.288s
 
 - [How to write benchmarks in Go](https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go)
 - [มาใช้งาน Benchmark ในภาษา Go กัน](https://www.somkiat.cc/benchmark-in-golang/)
+- [Package test - import "cmd/go/internal/test" and search this with GOMAXPROCS](https://golang.org/pkg/cmd/go/internal/test/)
+- [Package runtime - import "runtime" and search this with GOMAXPROCS](https://golang.org/pkg/runtime/)
