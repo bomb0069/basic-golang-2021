@@ -4,7 +4,7 @@
   - [Initial Go Project](./project/initial.md)
   - [Go Simple Project](./project/simple.md)
   - [Testing in Golang](./testing/SUMMARY.md)
-    - [Testing](./testing/testing.md)
+    - [Create and Run Test](./testing/testing.md)
     - [Naming and Convention](./testing/naming.md)
     - [Benchmarking](./testing/benchmark.md)
     - [Profiling](./testing/profile.md)
