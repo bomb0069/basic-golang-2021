@@ -1,34 +1,10 @@
 # Testing in Golang
 
-## Create Unit Test
-
-ลักษณะของ File Test ใน Go
-
-- อยู่ที่เดียวกับ Production Code
-- ใช้ชื่อ Package เดียวกัน ตามด้วย _test
-- Function Test ต้องขึ้นต้นด้วยคำว่า "Test" เสมอ
-- ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง
-
-ตย. demo_test.go
-
-```go
-package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
-                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
-
-import (
-    "demo"          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
-    "testing"       
-)
-
-func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
-                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
-    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
-    r = demo.Greeting()
-    if r != "Hello World" {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
-        t.Errorf("Error with %v", r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
-    }
-}
-```
+- [Testing](./testing.md)
+- [Naming and Convention](./naming.md)
+- [Benchmarking](./benchmark.md)
+- [Profiling](./profile.md)
+- [Sub Testing and Sub Benchmarking](./sub.md)
 
 ## การรัน Test
 
