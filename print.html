@@ -228,32 +228,13 @@ func main() {
     |- main.go   // runable file with main function
 </code></pre>
 <h1><a class="header" href="#testing-in-golang" id="testing-in-golang">Testing in Golang</a></h1>
-<h2><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h2>
-<p>ลักษณะของ File Test ใน Go</p>
 <ul>
-<li>อยู่ที่เดียวกับ Production Code</li>
-<li>ใช้ชื่อ Package เดียวกัน ตามด้วย _test</li>
-<li>Function Test ต้องขึ้นต้นด้วยคำว่า &quot;Test&quot; เสมอ</li>
-<li>ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง</li>
+<li><a href="testing/./testing.html">Testing</a></li>
+<li><a href="testing/./naming.html">Naming and Convention</a></li>
+<li><a href="testing/./benchmark.html">Benchmarking</a></li>
+<li><a href="testing/./profile.html">Profiling</a></li>
+<li><a href="testing/./sub.html">Sub Testing and Sub Benchmarking</a></li>
 </ul>
-<p>ตย. demo_test.go</p>
-<pre><code class="language-go">package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
-                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
-
-import (
-    &quot;demo&quot;          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
-    &quot;testing&quot;       
-)
-
-func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
-                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
-    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
-    r = demo.Greeting()
-    if r != &quot;Hello World&quot; {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
-        t.Errorf(&quot;Error with %v&quot;, r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
-    }
-}
-</code></pre>
 <h2><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h2>
 <p>การรัน Test ใช้ Command</p>
 <pre><code class="language-cmd">$go test    // มันจะหาไฟล์ Testให้
@@ -292,6 +273,180 @@ demo/demo.go:3.24,5.2 1 1
 <li><a href="https://golang.org/pkg/testing/">Go Testing Package</a></li>
 </ul>
 <h1><a class="header" href="#naming-and-convention" id="naming-and-convention">Naming and Convention</a></h1>
+<h2><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h2>
+<p>ลักษณะของ File Test ใน Go</p>
+<ul>
+<li>อยู่ที่เดียวกับ Production Code</li>
+<li>ใช้ชื่อ Package เดียวกัน ตามด้วย _test</li>
+<li>Function Test ต้องขึ้นต้นด้วยคำว่า &quot;Test&quot; เสมอ</li>
+<li>ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง</li>
+</ul>
+<p>ตย. demo_test.go</p>
+<pre><code class="language-go">package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
+                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
+
+import (
+    &quot;demo&quot;          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
+    &quot;testing&quot;       
+)
+
+func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
+                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
+    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
+    r = demo.Greeting()
+    if r != &quot;Hello World&quot; {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
+        t.Errorf(&quot;Error with %v&quot;, r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
+    }
+}
+</code></pre>
+<h2><a class="header" href="#package-name-กับการทดสอบในภาษา-go" id="package-name-กับการทดสอบในภาษา-go">Package Name กับการทดสอบในภาษา Go</a></h2>
+<p>เมื่อวันก่อนผมมีเขียนเกี่ยวกับเรื่อง <a href="https://sck.pub/basic-go-day1-1">Basic Golang</a> ตามที่ได้แอบฟังในคลาสพี่ปุ๋ยไป พอดีมีเวลา อยากทำความเข้าใจเรื่องการใน Go ดู ก็เลยลองเขียนฟังก์ชั่นง่าย ๆ เพื่อจะลองทดสอบดู ก่อนที่จะไปลองแบบยาก ๆ กลายเป็นว่า มันทำยังไงก็รันไม่ได้ แถม VS Code เจ้ากรรม พอเราจะลองอะไรบางอย่าง Extension ที่ลงไว้ก็ฉลาดซะอีก มาลบ Code ที่ลอง เพราะน่าจะผิดไวยากรณ์หรืออะไรสักอย่างของ Go เลยทำให้ผมรู้ตัวว่าตัวผมเองยังไม่เข้าใจใน ภาษา Go อยู่มากทีเดียว ยิ่งไปเจอใส่แค่เขียนเทสง่าย ๆ ให้รันได้ตามที่เราคิดยังทำไม่ได้เลย อย่าพึ่งไปไกลเลย วันนี้เลยจะกลับมาที่พื้นฐานเรื่องการทดสอบใน Go เพื่อให้ตัวเองเข้าใจมันก่อนดีกว่า พอได้ลองเล่นสักพักเลยคิดว่างั้นขอจดไว้สักหน่อยแล้วกัน เผื่อวันหลังต้องใช้จะได้มีที่ไว้ให้กลับมาอ่าน</p>
+<h3><a class="header" href="#ตกมาตายตังแตแรกเลย" id="ตกมาตายตังแตแรกเลย">ตกม้าตายตั้งแต่แรกเลย</a></h3>
+<p>จากที่ผมอธิบายไปใน Blog ก่อนหน้านี้ว่า ลักษณะของการเขียนการทดสอบใน Go มีหลักการคร่าว ๆ อยู่ 4 ข้อคือ อยู่ที่เดียวกับ Code, ให้ Package ต่อท้ายด้วย _test, ให้ชื่อฟังก์ชั่นขึ้นต้นด้วย Test และสุดท้ายต้องเขียนเงื่อนไขการทดสอบเอง ผมจึงลองเขียนเทสเล็ก ๆ ง่าย ๆ ตามนี้ดู</p>
+<p><code>plus.go</code></p>
+<pre><code class="language-go">package calculator
+
+func Plus(input1 int, input2 int) int {
+  return input1 + input2
+}
+</code></pre>
+<p><code>plus_test.go</code></p>
+<pre><code class="language-go">package calculator_test
+
+import (
+  &quot;testing&quot;
+)
+
+func Test1Plus1ShouldBe2Test(t *testing.T) {
+  actual := Plus(1, 1)
+  if 2 != actual {
+    t.Errorf(&quot;1 + 1 should be 2 it's not %v&quot;, actual)
+  }
+}
+</code></pre>
+<p>ซึ่งกลายเป็นว่า Code นี้ Error เพราะ ไฟล์ Test (plus_test.go) ไม่สามารถเรียกใช้ ฟังก์ชั่น Plus ที่เขียนไว้ใน plus.go ได้ มาถึงแค่ตรงนี้ผมก็เริ่มมึนหล่ะ ทำไมมันเรียกใช้ไม่ได้หล่ะ ในเมื่อผมก็เขียนทุกอย่างถูกต้องตามที่ผมคิดแล้ว (สำหรับคนที่รู้แล้วอย่าพึ่ด่าผมเลยนะครับ ตอนนั้นมันหน้ามืดตามัวมาก) ซึ่ง VSCode มันก็บอกผมนะครับ ว่า</p>
+<p><code>“undeclared name: Plus compiler”</code></p>
+<p>ด้วยความไม่มั่นใจว่าเราทำอะไรบางอย่างผิดหรือเปล่า (มันต้องมีอะไรผิดแหละ) ผมเลยลองมั่ว ๆ ไปหลาย ๆ อย่าง</p>
+<h3><a class="header" href="#ลองเปลียน-package-name-ดู" id="ลองเปลียน-package-name-ดู">ลองเปลี่ยน Package Name ดู</a></h3>
+<p>อันแรกเลยเนื่องจากผมไม่ค่อยมั่นใจว่าเกิดอะไรขึ้น ผมเลยลองเปลี่ยนชื่อ Package ของ calculate_test กลับมาเป็น calculator เฉย ๆ มันก็รันเทสผ่านซะงั้น ถึงแม้ว่า Code จะผ่าน แต่ VS Code ก็ยังด่าผมในไฟล์ Test อยู่ดีว่า</p>
+<p><code>plus.go</code></p>
+<pre><code class="language-go">package calculator
+
+func Plus(input1 int, input2 int) int {
+  return input1 + input2
+}
+</code></pre>
+<p><code>plus_test.go</code></p>
+<pre><code class="language-go">package calculator
+
+import (
+  &quot;testing&quot;
+)
+
+func Test1Plus1ShouldBe2Test(t *testing.T) {
+  actual := Plus(1, 1)
+  if 2 != actual {
+    t.Errorf(&quot;1 + 1 should be 2 it's not %v&quot;, actual)
+  }
+}
+</code></pre>
+<p><code>“package calculator; expected calculator_test compiler”</code></p>
+<p>ซึ่งแปลว่ามันมองว่าไฟล์ Test (ชื่อไฟล์ plus_test.go) ก็ควรอยู่ใน Package calculator_test สิ (ตามที่เขียนไปตอนแรก)</p>
+<h3><a class="header" href="#ลองใสชือ-package-ใน-import-ดู" id="ลองใสชือ-package-ใน-import-ดู">ลองใส่ชื่อ Package ใน Import ดู</a></h3>
+<p>อันที่สองผมลองแบบทื่อ ๆ เลย คือในเมื่อมันต้องเป็น package ที่ตามด้วย _test แล้วจะไปใช้ฟังก์ชัน Plus ใน calculator ใช่ไหม งั้นก็ Force ใส่ใน import เนี่ยเลย กลายเป็นว่าพอสั่ง Save เท่านั้นแหละ VS Code ก็จัดการลบบรรทัดที่เพิ่มเข้าไปทิ้งซะเลย (ไอ้เราก็ดื้อ เอากลับมาแล้ว Save ใหม่อยู่สัก 2–3 รอบ VS Code ก็ยังลบให้อยู่ดี)</p>
+<p><code>plus.go</code></p>
+<pre><code class="language-go">package calculator
+
+func Plus(input1 int, input2 int) int {
+  return input1 + input2
+}
+</code></pre>
+<p><code>plus_test.go</code></p>
+<pre><code class="language-go">package calculator_test
+
+import (
+  &quot;calculator&quot;
+  &quot;testing&quot;
+)
+
+func Test1Plus1ShouldBe2Test(t *testing.T) {
+  actual := Plus(1, 1)
+  if 2 != actual {
+    t.Errorf(&quot;1 + 1 should be 2 it's not %v&quot;, actual)
+  }
+}
+</code></pre>
+<h3><a class="header" href="#ลองไปเทียบกับทีเคยเขียนไวตอนแอบเรียน" id="ลองไปเทียบกับทีเคยเขียนไวตอนแอบเรียน">ลองไปเทียบกับที่เคยเขียนไว้ตอนแอบเรียน</a></h3>
+<p>ดูไปดูมา หาไปหามา จนลองไปเทียบกับไฟล์สมัยตอนแอบเรียนกับพี่ปุ๋ยก็พบว่า Test ที่เขียนไปไม่ได้อ้างอิงว่า Plus อยู่ใน package ไหน จึงทำให้เราไม่สามารถเรียกใช้ Plus ได้โดยตรง การที่เราเขียน Test โดยแยก Package ออกจาก Code ก็เพื่อที่เราจะจำลองว่า ถ้าเกิดมีใครสักคนมาเรียกใช้ Plus จาก Package อื่น ๆ เราะจะสามารถเรียกใช้ได้จริง ๆ ไหม และต้องเรียกใช้อย่างไร (การเขียนเทสคือการมองจากมุมองของลูกค้า) เพราะฉะนั้นพอลองเปลี่ยนให้ Test มีการระบุ Package และมีการ Import ที่ถูกต้อง Code ก็สามารถรันทดสอบได้ แล้วดังตัวอย่างด้านล่าง</p>
+<p><code>plus.go</code></p>
+<pre><code class="language-go">package calculator
+
+func Plus(input1 int, input2 int) int {
+  return input1 + input2
+}
+</code></pre>
+<p><code>plus_test.go</code></p>
+<pre><code class="language-go">package calculator_test
+
+import (
+  &quot;calculator&quot;
+  &quot;testing&quot;
+)
+
+func Test1Plus1ShouldBe2Test(t *testing.T) {
+  actual := calculator.Plus(1, 1)
+  if 2 != actual {
+    t.Errorf(&quot;1 + 1 should be 2 it's not %v&quot;, actual)
+  }
+}
+</code></pre>
+<h3><a class="header" href="#ลองไปหาขอมูลเพิมเติมมานิดหนอย" id="ลองไปหาขอมูลเพิมเติมมานิดหนอย">ลองไปหาข้อมูลเพิ่มเติมมานิดหน่อย</a></h3>
+<p>จากปัญหาที่ผมเจอ ตอนที่ผมยังมึน ๆ เอาหัวมุด Code เล็ก ๆ ของผมนั้น ผมได้ลองหาข้อมูลดูว่าจริง ๆ แล้วชาวบ้านเขาเจอปัญหาแบบเดียวกันกับผม บ้างหรือเปล่า แล้วปัญหาที่เจอเขาคิดยังไง หรือแก้ยังไง จนไปเจอข้อมูลนึงใน Stack Overflow ซึ่งอ่านแล้วน่าสนใจ ใครอยากได้ข้อมูลเพิ่มสามารถไปที่นี่ได้เลยครับ</p>
+<p><a href="https://sck.pub/sof-golang-test-package-name">Proper package naming for testing with the Go language - Stack Overflow</a></p>
+<p>โดยคำถามนี้ถูกถามไว้เมื่อตั้งแต่ 7 ปีที่แล้ว แต่ผมก็ยังคิดว่าคำตอบของคำถามนั้นน่าสนใจมาก เพราะคนที่ถามอยากรู้ว่าวิธีการกำหนดชื่อของ Package Test ของ Go ควรจะเป็นอย่างไร โดยที่คนถาม ระบุว่าในมุมมองของเขา เขาได้ลองทำมาและเจอความเป็นไปได้ 3 แบบ ในการกำหนด Package ของ Test ใน Go คือ</p>
+<ol>
+<li>ใช้ชื่อ Package เดียวกันเลย (แบบที่กูลองเลย)</li>
+<li>ใช้ชื่อ Package แบบที่เราคุยกันมาคือ มีคำว่า _test ต่อท้ายชื่อ Package แต่การอ้างถึงเพื่อทำการทดสอบจาก Package Test คือใช้ &quot;github.com/user/myfunc&quot; ซึ่งหมายถึงการอ้างไปถึง Package แบบ Full Path ตาม Path ของ Source ที่อยู่ใน Github เลย (อ่าอันนี้ไม่ได้ลอง)</li>
+<li>ใช้ชื่อ Package ต่อท้ายด้วย คำว่า _test แต่กรณีที่คุณต้องการอ้างถึง Code ก็ใช้ Import &quot;myfunc&quot;ปกติคล้ายกับที่ผมแก้ไปก่อนหน้านี้เลย แต่ในแบบที่ 3 ของคำถาม เขา Alias ชื่อของ Package ให้เป็น “.” ทำให้สามารถเรียกใช้ฟังก์ชั่นได้เลยโดยไม่ต้องกำหนด Package <code>ซึ่งส่วนตัวผมไม่ค่อยชอบมันเท่าไหร่เพราะ ถ้าเราทำแบบนี้ใน Code เวลาที่เรากลับมาอ่าน มันทำให้เราไม่รู้ว่ามันเป็นของ Package ไหน ถึงแม้ว่าในการทดสอบเราจะใช้ Package เดียวก็เหอะ แต่ในการเขียนจริง ๆ เราก็ควรจะกำหนด Package นี่นะ (ความเห็นส่วนตัวล้วน ๆ)</code></li>
+</ol>
+<p><code>plus.go</code></p>
+<pre><code class="language-go">package calculator
+
+func Plus(input1 int, input2 int) int {
+  return input1 + input2
+}
+</code></pre>
+<p><code>plus_test.go</code></p>
+<pre><code class="language-go">package calculator_test
+
+import (
+  . &quot;calculator&quot;
+  &quot;testing&quot;
+)
+
+func Test1Plus1ShouldBe2Test(t *testing.T) {
+  actual := Plus(1, 1)
+  if 2 != actual {
+    t.Errorf(&quot;1 + 1 should be 2 it's not %v&quot;, actual)
+  }
+}
+</code></pre>
+<h3><a class="header" href="#มันกแลวแตวาเรากำลังทดสอบแบบไหน" id="มันกแลวแตวาเรากำลังทดสอบแบบไหน">มันก็แล้วแต่ว่าเรากำลังทดสอบแบบไหน</a></h3>
+<p>ที่ผมบอกว่าคำตอบมันน่าสนใจ ก็เพราะคนที่ตอบคำถามเขาบอกว่า จริง ๆ แล้วจากที่ List มาทั้ง 3 แบบ มันก็ทำให้เราสามารถทดสอบฟังก์ชันของเราได้แหละ แต่สุดท้ายการเลือกว่าจะใช้วิธีการแบบไหน มันก็ขึ้นกับความตั้งใจของเรา ว่าเรากำลังจะทดสอบมันจากมุมมองไหน โดยเขาแบ่งมุมมองของการทดสอบออกเป็น 2 ระดับ นั่นก็คือการทดสอบแบบ White-Box และ การทดสอบแบบ Black-Box ซึ่งเราสามารถทำการทดสอบได้ทั้ง แบบ โดยอาจจะสร้างเป็น plus_white_box_test.go และ plus_black_box_test.go เพื่อรองรับ การทดสอบทั้ง 2 แบบตามลำดับข้างต้น</p>
+<ul>
+<li>การทดสอบแบบ Black-Box —ใช้ Package ที่ชื่อ “calculator_test” เพื่อให้เรามั่นใจว่า การทดสอบนี้จะใช้ได้กับฟังก์ชั่นที่คุณ Export ออกมาให้คนอื่นใช้เท่านั้น ถ้าเผลอไปเรียกใช้ตัวที่ไม่ได้ Export ออกมามันก็จะ Compile ไม่ผ่าน (อ่านเพิ่มเรื่องการ Export)</li>
+<li>การทดสอบแบบ White-Box — ใช้ Package ที่ชื่อ “calculator” เพื่อให้เราสามารถทดสอบในฟังก์ชัน ตัวแปร หรือ Method ที่ไม่ได้ Export มาให้ใช้ เพราะบางครั้งการทดสอบแบบ Unit Test ก็ต้องการที่จะ Access ไปยังของเหล่านั้น เพื่อจะได้ทดสอบเฉพาะจุดที่สนใจจริง ๆ</li>
+</ul>
+<p>ซึ่งเมื่อเทียบกับความเป็นไปได้ 3 อย่างในคำถามก็สามารถตอบได้ดังนี้</p>
+<ol>
+<li>ใช้ชื่อ Package เดียวกันเลย — อันนี้ก็ตรงตัวคือถ้าต้องการทดสอบแบบ White-Box ก็ทำแบบนี้ได้</li>
+<li>ใช้ชื่อ Package แบบ Full Path ตาม Path ของ Source ที่อยู่ใน Github — อันนี้ก็มองเป็น Black-Box แต่จะมองว่า “เป็นการทดสอบโดย ทดสอบว่าถ้าแยก Package กัน Build/Deploy เลย จะสามารถดึงของจาก Package ที่แยกกันไว้ จาก Test หลักของอีก Package ได้ไหม”</li>
+<li>ใช้ชื่อ Package ต่อท้ายด้วย คำว่า _test — อันนี้เหมือนอันที่ 2 แต่ใช้ Alias ระบุเป็น “.” เท่านั้นเอง</li>
+</ol>
+<p>ซึ่งจริง ๆ ผมยังมองไม่ออกว่าทำไมว่า ความเป็นไปได้ที่ 2 นั้นทำเพราะวัตถุประสงค์อะไร เพราะถ้าเป็นผม คงไม่แยก Code กับ Test ออกเป็นคนละ Repository แน่ ๆ แล้วถ้าจะเขียน Test เพื่อทดสอบ Code ที่เป็น Library ก็คงเขียนเพื่อทำความเข้าใจ และไม่ได้จะเก็บเทสนั้นไว้ใน Repository ของเรา</p>
+<h3><a class="header" href="#มันกจะขัด-ๆ-กับทีเคยทำมาบางอะนะ" id="มันกจะขัด-ๆ-กับทีเคยทำมาบางอะนะ">มันก็จะขัด ๆ กับที่เคยทำมาบ้างอะนะ</a></h3>
+<p>มาถึงตรงนี้ผมก็พอจะเข้าใจเรื่อง Package ของ Go ขึ้นมาบ้างแล้ว ยิ่งเป็นเรื่องการทดสอบแล้วด้วย ผมก็หวังเล็ก ๆ ว่าผมคงไม่ตกหลุมเดิมอีก เพียงแต่ว่า ผมเองมาจากสาย Java ซึ่งตอนสมัยที่ผมเริ่มศึกษาเรื่อง Unit Test ของ Java ก็มีคำถามนึงที่ผมค้างคาใจอยู่นานมาก คือ เราจะทำการทดสอบ Method ที่เป็น Private ได้ยังไง (Private Method ใน Java จะไม่สามารถเรียกใช้ได้จากภายนอกเลย) ซึ่งตอนนั้นก็เคยหลงทางถึงขนาดพยายามจะเปลี่ยนมันให้กลายเป็นแบบอื่น เพื่อให้ทดสอบได้ (เช่น เปลี่ยนเป็น Default หรือ Public คิดแล้วก็ปวดใจเล็ก ๆ ที่ทำไปตอนนั้น)</p>
+<p>ซึ่งหลังจากที่ได้ศึกษา Unit Test บน Java มาสักระยะนึงจึงทำให้ไปเจอคำพูดที่ว่า “เราไม่ทำการทดสอบ Private Method นะ เราทดสอบมันผ่าน Method ที่เป็น Public ตามมุมมองของผู้ใช้งาน” (ประมาณนี้แหละ จำไม่ได้หล่ะ) พอมาเจอแบบที่สามารถทดสอบฟังก์ชัน ที่ไม่ได้ Export ให้คนอื่นมาเรียกใช้ได้ แบบนี้ ก็เลยรู้สึกแปลก ๆ อยูบ้าง แต่อาจจะเป็นเพราะผมยังไม่เข้าใจที่มาที่ไปของการออกแบบภาษาแบบนี้ก็เป็นได้ ยังไงถ้าได้เจออะไร Update ไว้จะมาเล่าให้ฟังอีกทีแล้วกันนะฮะ</p>
 <h2><a class="header" href="#reference-1" id="reference-1">Reference</a></h2>
 <ul>
 <li><a href="https://ieftimov.com/post/testing-in-go-naming-conventions/">Testing in Go: Naming Conventions</a></li>

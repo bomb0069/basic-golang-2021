@@ -164,32 +164,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#testing-in-golang" id="testing-in-golang">Testing in Golang</a></h1>
-<h2><a class="header" href="#create-unit-test" id="create-unit-test">Create Unit Test</a></h2>
-<p>ลักษณะของ File Test ใน Go</p>
 <ul>
-<li>อยู่ที่เดียวกับ Production Code</li>
-<li>ใช้ชื่อ Package เดียวกัน ตามด้วย _test</li>
-<li>Function Test ต้องขึ้นต้นด้วยคำว่า &quot;Test&quot; เสมอ</li>
-<li>ภาษา Go แบบ Pure ๆ ต้องเขียนเช็คเงื่อนไขเอง</li>
+<li><a href="./testing.html">Testing</a></li>
+<li><a href="./naming.html">Naming and Convention</a></li>
+<li><a href="./benchmark.html">Benchmarking</a></li>
+<li><a href="./profile.html">Profiling</a></li>
+<li><a href="./sub.html">Sub Testing and Sub Benchmarking</a></li>
 </ul>
-<p>ตย. demo_test.go</p>
-<pre><code class="language-go">package demo_test   // ใช้ชื่อ Package เดียวกับ Production Code ตามด้วย _test
-                    // ปกติถ้าชื่อ package ไม่ตรงกับ go.mod ตัว Compile go ก็จะด่ายกเว้นเป็นกรณีของ test
-
-import (
-    &quot;demo&quot;          // ต้องทำการ Import จาก Production Code เพื่อจำลองว่าถูกเรียกจาก นอก Package ของ Production
-    &quot;testing&quot;       
-)
-
-func TestHello(t *testing.T) {      // Function Test ขึ้นต้นด้วย Test เสมอ
-                                    // Test Framework  จะส่ง testing.T มาให้เราใช้
-    var r string                    // ประกาศตัวแปลของ Go ซึ่งแาจจะใช้ r := demo.Greeting() ได้
-    r = demo.Greeting()
-    if r != &quot;Hello World&quot; {             // ต้องตรวจสอบ Result เองว่า Expected กับ Actual เท่ากันไหม
-        t.Errorf(&quot;Error with %v&quot;, r)    // ใช้ t ที่ได้มาจัด Format ของ Error เวลา Test ไม่ผ่าน
-    }
-}
-</code></pre>
 <h2><a class="header" href="#การรัน-test" id="การรัน-test">การรัน Test</a></h2>
 <p>การรัน Test ใช้ Command</p>
 <pre><code class="language-cmd">$go test    // มันจะหาไฟล์ Testให้
